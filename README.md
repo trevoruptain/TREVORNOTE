@@ -1,4 +1,4 @@
-# TREVORNOTE
+# Full Stack Project
 ![TREVORNOTE](/documentation/trevornote-logo-s.png "TREVORNOTE")
 
 
