@@ -2,7 +2,7 @@
 
 ## Proposal
 <ul>
-  <li>[Component Hierarchy](/component_hierarchy)</li>
+  <li><a href="">(/component_hierarchy)</a></li>
   <li>[Routes](/routes.md)</li>
   <li>[API Endpoints](/api_endpoints.md)</li>
   <li>[State Shape](/state_shape)</li>
