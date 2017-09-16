@@ -1,8 +1,10 @@
 # TREVORNOTE
+![TREVORNOTE](/documentation/trevornote-logo-s.png "TREVORNOTE")
+
 
 ## Proposal
 * [Component Hierarchy](/documentation/component_hierarchy.md)
-* [Routes](./documentation/routes.md)
+* [Routes](/documentation/routes.md)
 * [API Endpoints](/documentation/api_endpoints.md)
 * [State Shape](/documentation/state_shape.md)
 
