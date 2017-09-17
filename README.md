@@ -10,8 +10,8 @@
 * [State Shape](/documentation/state_shape.md)
 
 ## Design
-* [Xperience Design File](/documentation/trevornote.xd)
 * [Wireframe PDF](/documentation/trevornote.pdf)
+* [Xperience Design File](/documentation/trevornote.xd)
 * [TREVORNOTE Proposal](/documentation/proposal.pdf)
 
 ## Resources
