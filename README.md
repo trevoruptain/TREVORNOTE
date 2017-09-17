@@ -3,13 +3,15 @@
 
 
 ## Proposal
+* [MVPs](/documentation/mvps.md)
 * [Component Hierarchy](/documentation/component_hierarchy.md)
 * [Routes](/documentation/routes.md)
 * [API Endpoints](/documentation/api_endpoints.md)
 * [State Shape](/documentation/state_shape.md)
 
 ## Design
-* [Xperience Design File](/documentation/proposal.xd)
+* [Xperience Design File](/documentation/trevornote.xd)
+* [Wireframe PDF](/documentation/trevornote.pdf)
 * [TREVORNOTE Proposal](/documentation/proposal.pdf)
 
 ## Resources
@@ -19,4 +21,4 @@
 ### To run:
 `bundle install`
 
-`npm install --save webpack react react-dom react-redux redux redux-logger babel-core babel-loader babel-preset-react babel-preset-es2015`
+`npm install`
