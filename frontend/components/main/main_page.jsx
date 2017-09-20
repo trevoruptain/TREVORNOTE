@@ -1,7 +1,7 @@
 import React from 'react';
 
 const MainPage = () => (
-  <p>MIC</p>
+  <p>ABCD</p>
 );
 
 export default MainPage;
