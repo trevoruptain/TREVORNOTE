@@ -12,7 +12,7 @@ import MainIndexContainer from './main/main_index_container';
 
 const App = () => (
   <div>
-    <h1>You're inside the app!</h1>
+    <h1>You're inside an app!</h1>
     <Switch>
       <Route path="/" component={MainIndexContainer} />
     </Switch>
