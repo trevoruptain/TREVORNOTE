@@ -1,0 +1,2 @@
+module NoteShorbookShortcutsHelper
+end
