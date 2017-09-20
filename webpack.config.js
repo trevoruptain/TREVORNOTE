@@ -13,7 +13,7 @@ module.exports = {
   module: {
     loaders: [
       {
-        test: /\.jsx?$/,
+        test: /\.(jsx|jpg|png|svg)$/,
         exclude: /(node_modules|bower_components)/,
         loader: 'babel-loader',
         query: {
