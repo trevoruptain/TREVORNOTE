@@ -24,5 +24,5 @@ document.addEventListener("DOMContentLoaded", () => {
   const store = configureStore();
   const root = document.getElementById("root");
 
-  ReactDOM.render(<h1>Gotcha</h1>, root);
+  ReactDOM.render(<Root store={store} />, root);
 });
