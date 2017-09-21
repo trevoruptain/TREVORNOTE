@@ -26,7 +26,11 @@ class SessionForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const user = this.state;
-    this.props.processForm({user});
+    if (this.props.location.pathname === "/login") {
+      this.props.login({user});
+    } else {
+      this.props.signup({user});
+    }
   }
 
   renderErrors() {
