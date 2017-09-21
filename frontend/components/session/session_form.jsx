@@ -9,7 +9,6 @@ class SessionForm extends React.Component {
       password: ''
     };
     this.handleSubmit = this.handleSubmit.bind(this);
-    console.log(this.props);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -34,7 +33,7 @@ class SessionForm extends React.Component {
     return(
       <ul>
         {this.props.errors.map((error, i) => (
-          <li key={`error-${i}`}>
+          <li key={`error-${i}`} className="error-text">
             {error}
           </li>
         ))}
@@ -58,6 +57,17 @@ class SessionForm extends React.Component {
     if (this.props.location.pathname === "/") {
       return (
         <p className="base-text">By clicking Sign up, I agree to the Terms of Service and Privacy Policy.</p>
+      );
+    }
+  }
+
+  showLink() {
+    if (this.props.location.pathname !== "/") {
+      return (
+        <div>
+          <p>Want to go back?</p><br />
+          <a href="/">Return Home</a>
+        </div>
       );
     }
   }
@@ -87,6 +97,7 @@ class SessionForm extends React.Component {
             {this.showBaseText()}
             <input type="submit" value="Submit" />
             {this.renderErrors()}
+            {this.showLink()}
           </div>
         </form>
       </div>

@@ -7,9 +7,9 @@ const SessionPage = () => (
     <div className="top-bar" />
     <div id="session-main">
       <div id="login-container">
-        <Link to="/">
+        <a href="/">
           <img src={"https://s26.postimg.org/uumqyfbj9/trevornote-icon.png"} />
-        </Link>
+        </a>
         <SessionFormContainer />
       </div>
     </div>

@@ -12,10 +12,12 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch, { location }) => {
   if (location === undefined) {
-    location = { pathname: '/home' };
+    location = {
+      pathname: '/home'
+    };
   }
   let formType = location.pathname.slice(1);
-  const processForm = (formType === 'login') ? login : signup;
+  const processForm = (formType === 'signup') ? signup : login;
   return {
     processForm: user => dispatch(processForm(user)),
     formType

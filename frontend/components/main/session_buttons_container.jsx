@@ -1,12 +1,17 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
-const SessionButtonsContainer = () => (
-  <ul id="session-buttons-container">
-    <li><Link to="/login">Login</Link></li>
-    <li><Link to="/signup">Sign Up</Link></li>
-    <li><button>Demo</button></li>
-  </ul>
-);
+import { loginDummy } from '../../actions/session_actions';
+import SessionButton from './session_button';
 
-export default SessionButtonsContainer;
+const mapStateToProps = ({ session }) => ({
+  currentUser: session.currentUser
+});
+
+const mapDispatchToProps = dispatch => ({
+  loginDummy: () => dispatch(loginDummy())
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(SessionButton);

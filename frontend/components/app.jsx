@@ -18,7 +18,7 @@ const App = () => (
   <Switch>
     <AuthRoute path="/login" component={ SessionPage } />
     <AuthRoute path="/signup" component={ SessionPage } />
-    <Route path="/trevornote" component={ NotePage } />
+    <ProtectedRoute path="/trevornote" component={ NotePage } />
     <Route exact path="/" component={ MainPage } />
   </Switch>
 );

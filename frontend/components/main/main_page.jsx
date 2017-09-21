@@ -22,9 +22,9 @@ class MainPage extends React.Component {
         </div>
         <footer>
           <ul>
-            <li>LinkedIn</li>
-            <li>GitHub</li>
-            <li>Facebook</li>
+            <li><a href="https://www.linkedin.com/in/trevoruptain/" target="blank">LinkedIn</a></li>
+            <li><a href="https://github.com/trevoruptain" target="blank">GitHub</a></li>
+            <li><a href="https://www.facebook.com/trevoruptain" target="blank">Facebook</a></li>
           </ul>
         </footer>
       </div>
