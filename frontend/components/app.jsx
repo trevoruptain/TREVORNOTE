@@ -1,5 +1,6 @@
 import React from 'react';
 import { Provider } from 'react-redux';
+import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import {
   Route,
   Redirect,
@@ -7,16 +8,19 @@ import {
   Link,
   HashRouter
 } from 'react-router-dom';
+import store from '../store/store';
 
-import MainIndexContainer from './main/main_index_container';
+import MainPage from './main/main_page';
+import SessionPage from './session/session_page';
+import NotePage from './app/note_page';
 
 const App = () => (
-  <div>
-    <h1>You're inside an app!</h1>
-    <Switch>
-      <Route path="/" component={MainIndexContainer} />
-    </Switch>
-  </div>
+  <Switch>
+    <AuthRoute path="/login" component={ SessionPage } />
+    <AuthRoute path="/signup" component={ SessionPage } />
+    <Route path="/trevornote" component={ NotePage } />
+    <Route exact path="/" component={ MainPage } />
+  </Switch>
 );
 
 export default App;

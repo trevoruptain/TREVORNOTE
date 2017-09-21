@@ -9,13 +9,16 @@ import {
 } from 'react-router-dom';
 
 import NoteContainer from './note_container';
+import GreetingContainer from '../greeting/greeting_container';
 
-const App = () => (
+const NotePage = () => (
   <div>
+    <h1>Cool. This is the note page.</h1>
+    <GreetingContainer />
     <Switch>
       <Route path="/" component={NoteContainer} />
     </Switch>
   </div>
 );
 
-export default App;
+export default NotePage;

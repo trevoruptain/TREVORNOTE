@@ -1,23 +1,32 @@
 import React from 'react';
 import SessionButtonsContainer from './session_buttons_container';
 import IntroText from './intro_text';
+
 import SessionFormContainer from '../session/session_form_container';
-import Footer from './footer';
 
 class MainPage extends React.Component {
 
   render() {
     return (
       <div>
-        <nav className="navbar">
-          <h1>TREVORNOTE</h1>
+        <nav>
+          <img src={"https://s26.postimg.org/ysa0ntycl/trevornote-logo-s.png"} />
           <SessionButtonsContainer />
         </nav>
-        <div>
+        <div id="main">
           <IntroText />
-          <SessionFormContainer />
+          <div id="session-form-container">
+            <p className="signup-text">Sign Up for Free</p>
+            <SessionFormContainer />
+          </div>
         </div>
-        <Footer />
+        <footer>
+          <ul>
+            <li>LinkedIn</li>
+            <li>GitHub</li>
+            <li>Facebook</li>
+          </ul>
+        </footer>
       </div>
     );
   }
