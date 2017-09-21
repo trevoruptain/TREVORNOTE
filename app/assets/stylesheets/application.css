@@ -12,6 +12,7 @@
  *
  *= require_tree .
  *= require_self
+ *= require font-awesome
  */
 
 /*CSS Reset*/
@@ -289,4 +290,68 @@ footer a:hover {
   color: grey;
   font-style: italic;
   margin-bottom: 10px;
+}
+
+/*App*/
+
+#navbar {
+  height: 100vh;
+  padding: 12px 12px 24px 17px;
+  position: absolute;
+  transition: width 0.2s ease-in-out, left 0.2s ease-in-out 0.3s;
+  border-right: 1px solid #ececec;
+  background-color: #f8f8f8;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing:    border-box;
+  -ms-box-sizing:     border-box;
+  -o-box-sizing:      border-box;
+  box-sizing:         border-box;
+}
+
+#navbar img {
+  width: 30px;
+  height:auto;
+  margin-bottom: 50px;
+}
+
+#main-nav {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height:300px;
+  align-items: center;
+}
+
+#main-nav a {
+  width: 20px;
+  height: 20px;
+  border-radius: 100%;
+  border: solid 1px #d3d3d3;
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  color: #2DBE60;
+  background-color: none;
+  transition: background-color 0.5s;
+}
+
+#main-nav a:hover {
+  color: #FFF;
+  background-color: #2DBE60;
+  transition: background-color 0.5s;
+}
+
+#profile-holder {
+  text-align:center;
+}
+
+.profile-button {
+  width:30px;
+  height:auto;
+  color: grey;
 }

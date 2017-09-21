@@ -8,13 +8,12 @@ import {
   HashRouter
 } from 'react-router-dom';
 
+import NavBar from './nav_bar';
 import NoteContainer from './note_container';
-import GreetingContainer from '../greeting/greeting_container';
 
 const NotePage = () => (
   <div>
-    <h1>Cool. This is the note page.</h1>
-    <GreetingContainer />
+    <NavBar />
     <Switch>
       <Route path="/" component={NoteContainer} />
     </Switch>
