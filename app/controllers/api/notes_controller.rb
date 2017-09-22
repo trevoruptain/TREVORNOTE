@@ -1,4 +1,6 @@
-class NotesController < ApplicationController
+class Api::NotesController < ApplicationController
+  before_action :require_logged_in, only: [:create]
+  
   def new
   end
 

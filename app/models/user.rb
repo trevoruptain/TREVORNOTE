@@ -20,11 +20,11 @@ class User < ApplicationRecord
 
   after_initialize :ensure_session_token, :generate_friendly_name
 
-  # has_many :notebooks
-  # has_many :notes,
-  #   through: :notebooks,
-  #   source: :notes
-  #
+  has_many :notebooks
+  has_many :notes,
+    through: :notebooks,
+    source: :notes
+
   # has_many :notebook_shortcuts
   # has_many :note_shortcuts
 
@@ -68,6 +68,6 @@ class User < ApplicationRecord
   end
 
   def generate_friendly_name
-    self.friendly_name = self.email.split('@')[0]
+    self.friendly_name = self.email.split('@')[0] if self.email
   end
 end

@@ -11,4 +11,8 @@
 #
 
 class Note < ApplicationRecord
+  belongs_to :notebooks 
+  belongs_to :user,
+    through: :notebooks,
+    source: :user
 end
