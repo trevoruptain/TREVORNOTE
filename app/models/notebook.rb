@@ -13,4 +13,5 @@ class Notebook < ApplicationRecord
   validates :user_id, :name, presence: true
 
   has_many :notes
+  belongs_to :user
 end

@@ -1,7 +1,10 @@
 import React from 'react';
+import NoteSidebar from './note_sidebar';
 
 const NoteContainer = () => (
-  <p>You're in the note editing area</p>
+  <div className="note-holder">
+    <NoteSidebar />
+  </div>
 );
 
 export default NoteContainer;

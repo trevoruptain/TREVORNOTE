@@ -296,8 +296,8 @@ footer a:hover {
 
 #navbar {
   height: 100vh;
-  padding: 12px 12px 24px 17px;
-  position: absolute;
+  padding: 20px 8px;
+  position: fixed;
   transition: width 0.2s ease-in-out, left 0.2s ease-in-out 0.3s;
   border-right: 1px solid #ececec;
   background-color: #f8f8f8;
@@ -348,10 +348,46 @@ footer a:hover {
 
 #profile-holder {
   text-align:center;
+  cursor: pointer;
 }
 
 .profile-button {
   width:30px;
   height:auto;
   color: grey;
+}
+
+.sidebar-container {
+  border-right: solid 1px #000;
+  position: absolute;
+  top: 0;
+  left: 49px;
+  width: 300px;
+  height: 100vh;
+  background-color: #f8f8f8;
+  border-right: 1px solid #ececec;
+}
+
+#note-header {
+  width: 80%;
+  padding:10% 10% 5% 10%;
+  height:40px;
+  background-color: #FFF;
+  border-bottom: 1px solid #ececec;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#note-header h2 {
+  font-size: 16px;
+  text-transform: uppercase;
+  color: #c6c6c6;
+  font-weight: 100;
+  letter-spacing: 5px;
+}
+
+#note-header h4 {
+  font-size: 12px;
+  color: #c6c6c6;
 }
