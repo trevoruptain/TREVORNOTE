@@ -10,7 +10,7 @@ const faName = {
 };
 
 const NavButton = ({ type }) => (
-  <Link to={`/trevornote/${type}`}>
+  <Link to={`/${type}`}>
     <i className={`fa fa-${faName[type]}`}></i>
   </Link>
 );

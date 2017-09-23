@@ -1,26 +1,15 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import { AuthRoute, ProtectedRoute } from '../util/route_util';
-import {
-  Route,
-  Redirect,
-  Switch,
-  Link,
-  HashRouter
-} from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import store from '../store/store';
 
-import MainPage from './main/main_page';
-import SessionPage from './session/session_page';
-import NotePage from './app/note_page';
+import NavBar from './app/nav_bar';
 
-const App = () => (
-  <Switch>
-    <AuthRoute path="/login" component={ SessionPage } />
-    <AuthRoute path="/signup" component={ SessionPage } />
-    <ProtectedRoute path="/trevornote" component={ NotePage } />
-    <Route exact path="/" component={ MainPage } />
-  </Switch>
+const App = props => (
+  <NavBar />
 );
 
 export default App;
+
+//For Tags:
+// <Route exact path "/tags" component="{TagsOverlay}">
