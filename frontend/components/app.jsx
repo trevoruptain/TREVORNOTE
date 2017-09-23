@@ -3,14 +3,14 @@ import { Provider } from 'react-redux';
 import { Route } from 'react-router-dom';
 import store from '../store/store';
 
-import NavBar from './app/nav_bar';
-import SidebarContainer from './sidebar/sidebar_container';
+import NavBar from './nav/nav_bar';
+import NoteSidebarContainer from './sidebar/note_sidebar_container';
 import NotesContainer from './notes/notes_container';
 
 const App = props => (
   <div>
     <NavBar />
-    <SidebarContainer />
+    <NoteSidebarContainer />
     <NotesContainer />
   </div>
 );

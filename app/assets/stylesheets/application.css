@@ -68,6 +68,7 @@
 
  body {
    font-family: 'Helvetica', sans-serif;
+   overflow-y: hidden;
  }
 
  nav {
@@ -357,7 +358,7 @@ footer a:hover {
   color: grey;
 }
 
-.sidebar-container {
+#sidebar-container {
   border-right: solid 1px #000;
   position: absolute;
   top: 0;
@@ -369,9 +370,8 @@ footer a:hover {
 }
 
 #note-header {
-  width: 80%;
-  padding:10% 10% 5% 10%;
-  height:40px;
+  padding:5% 10% 5% 20px;
+  height:5vh;
   background-color: #FFF;
   border-bottom: 1px solid #ececec;
   display: flex;
@@ -382,7 +382,7 @@ footer a:hover {
 #note-header h2 {
   font-size: 16px;
   text-transform: uppercase;
-  color: #c6c6c6;
+  color: grey;
   font-weight: 100;
   letter-spacing: 5px;
 }
@@ -390,4 +390,54 @@ footer a:hover {
 #note-header h4 {
   font-size: 12px;
   color: #c6c6c6;
+}
+
+#note-list {
+  height: 95vh;
+  overflow-y: scroll;
+}
+
+.note-summary-item {
+  width: 100%;
+  padding: 10px 20px 0 20px;
+  box-sizing: border-box;
+  color: #c6c6c6;
+  background-color: #FFF;
+  transition: all 0.1s;
+  overflow-y: hidden;
+}
+
+.note-summary-item:hover {
+  color: #FCFCFC;
+  background-color: #2DBE60;
+  transition: all 0.1s;
+  cursor: pointer;
+}
+
+.note-summary-item:hover .note-container h4 {
+  color: #FCFCFC;
+  transition: all 0.1s;
+}
+
+.note-container {
+  height: 80px;
+  border-bottom: solid 1px #ececec;
+  margin: -1px;
+}
+
+.note-container h4 {
+  font-size: 12px;
+  color: grey;
+  transition: all 0.1s;
+}
+
+.note-container h5 {
+  margin: 5px 0;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+.note-container p {
+  font-size: 10px;
 }
