@@ -4,9 +4,15 @@ import { Route } from 'react-router-dom';
 import store from '../store/store';
 
 import NavBar from './app/nav_bar';
+import SidebarContainer from './sidebar/sidebar_container';
+import NotesContainer from './notes/notes_container';
 
 const App = props => (
-  <NavBar />
+  <div>
+    <NavBar />
+    <SidebarContainer />
+    <NotesContainer />
+  </div>
 );
 
 export default App;
