@@ -26,3 +26,10 @@ export const createNote = note => (
     data: {note}
   })
 );
+
+export const deleteNote = id => (
+  $.ajax({
+    method: 'DELETE',
+    url: `/api/notes/${id}`
+  })
+);

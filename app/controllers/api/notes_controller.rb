@@ -11,13 +11,18 @@ class Api::NotesController < ApplicationController
   end
 
   def create
-    @note= Note.create!(note_params)
+    @note = Note.create!(note_params)
     render :show
   end
 
   def destroy
-    @note= note.find(params[:id])
-    @note.destroy
+    @note = current_user.notes.where(id: params[:id]).first
+    if @note
+      @note.destroy
+      render :show
+    else
+      render json: ["That note doesn't exist"], status: 400
+    end
   end
 
   private

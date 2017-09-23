@@ -397,12 +397,19 @@ footer a:hover {
   overflow-y: scroll;
 }
 
+#note-list a {
+  text-decoration: none;
+}
+
+#note-list ul:last-child {
+  margin-bottom: 30px;
+}
+
 .note-summary-item {
-  width: 100%;
-  padding: 10px 20px 0 20px;
-  box-sizing: border-box;
+  padding: 10px 20px 2px 20px;
   color: #c6c6c6;
   background-color: #FFF;
+  border: solid 2px #FFF !important;
   transition: all 0.1s;
   overflow-y: hidden;
 }
@@ -410,6 +417,7 @@ footer a:hover {
 .note-summary-item:hover {
   color: #FCFCFC;
   background-color: #2DBE60;
+  border: solid 2px #2DBE60 !important;
   transition: all 0.1s;
   cursor: pointer;
 }
@@ -419,14 +427,22 @@ footer a:hover {
   transition: all 0.1s;
 }
 
+.note-summary-item:hover .note-container {
+  border-bottom: solid 1px #2DBE60;
+  transition: all 0.1s;
+}
+
 .note-container {
   height: 80px;
   border-bottom: solid 1px #ececec;
-  margin: -1px;
+  position: relative;
+  box-sizing: border-box;
+  transition: all 0.1s;
 }
 
 .note-container h4 {
   font-size: 12px;
+  font-weight: 700;
   color: grey;
   transition: all 0.1s;
 }
@@ -440,4 +456,20 @@ footer a:hover {
 
 .note-container p {
   font-size: 10px;
+  font-weight: 500;
+}
+
+.note-actions {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 35px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+  color: #FFF;
+}
+
+.selected-note {
+  border: solid 2px #c6c6c6 !important;
 }

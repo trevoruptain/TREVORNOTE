@@ -24,7 +24,8 @@ class NoteSidebar extends React.Component {
               <NoteSummaryItem
                 key={note.id}
                 note={note}
-                deleteNote={this.props.deleteNote} />
+                deleteNote={this.props.deleteNote}
+                currentNote={this.props.match.params.noteId == note.id} />
             ))}
           </ul>
         </div>
