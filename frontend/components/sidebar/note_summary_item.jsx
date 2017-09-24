@@ -8,7 +8,6 @@ class NoteSummaryItem extends React.Component {
   }
 
   render() {
-    debugger;
     const note = this.props.note;
     let className = "";
 
@@ -21,7 +20,7 @@ class NoteSummaryItem extends React.Component {
         <li className={`note-summary-item ${className}`}>
           <div className="note-container">
             <h4>{note.title}</h4>
-            <h5>Moments ago</h5>
+            <h5>{note.last_updated}</h5>
             <p>{note.body}</p>
             <div className="note-actions">
               <i className="fa fa-trash" onClick={() => this.props.deleteNote(note.id)}/>
