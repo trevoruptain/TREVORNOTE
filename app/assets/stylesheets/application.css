@@ -406,11 +406,11 @@ footer a:hover {
 }
 
 .note-summary-item {
-  padding: 10px 20px 2px 20px;
-  color: #c6c6c6;
+  padding: 10px 20px 0px 20px;
+  color: #c4c4c4;
   background-color: #FFF;
   border: solid 2px #FFF !important;
-  transition: all 0.1s;
+  transition: background-color, border 0.1s;
   overflow-y: hidden;
 }
 
@@ -418,7 +418,7 @@ footer a:hover {
   color: #FCFCFC;
   background-color: #2DBE60;
   border: solid 2px #2DBE60 !important;
-  transition: all 0.1s;
+  transition: background-color, border, color 0.1s;
   cursor: pointer;
 }
 
@@ -429,15 +429,13 @@ footer a:hover {
 
 .note-summary-item:hover .note-container {
   border-bottom: solid 1px #2DBE60;
-  transition: all 0.1s;
 }
 
 .note-container {
   height: 80px;
   border-bottom: solid 1px #ececec;
   position: relative;
-  box-sizing: border-box;
-  transition: all 0.1s;
+  box-sizing: border-box;z
 }
 
 .note-container h4 {
@@ -449,9 +447,9 @@ footer a:hover {
 
 .note-container h5 {
   margin: 5px 0;
-  font-size: 11px;
+  font-size: 10px;
   text-transform: uppercase;
-  letter-spacing: 3px;
+  letter-spacing: 2px;
 }
 
 .note-container p {
@@ -472,4 +470,65 @@ footer a:hover {
 
 .selected-note {
   border: solid 2px #c6c6c6 !important;
+}
+
+.selected-note .note-container {
+  border-bottom: none !important;
+}
+
+/*Notes Container*/
+
+#notes-main {
+  padding-left: 349px;
+}
+
+#notes-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+#notes-header .green {
+  color: #2DBE60;
+  border: solid 1px #2DBE60;
+  padding: 3px 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#notes-header .green:hover {
+  background-color: #2DBE60;
+  color: #FFF;
+}
+
+#note-actions {
+  width: 50px;
+  padding: 0 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+#note-actions i {
+  color: #c6c6c6;
+  cursor: pointer;
+}
+
+#note-actions i:hover {
+  color: #2DBE60;
+}
+
+#note-body {
+  padding-left: 100px;
+}
+
+#note-body h2 {
+  font-size: 20px;
+  font-weight: 100;
+  color: #2dbe60;
+  margin-bottom: 30px;
+}
+
+#note-body p {
+  font-size: 12px;
+  color: grey;
 }

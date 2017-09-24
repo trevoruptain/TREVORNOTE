@@ -5,10 +5,16 @@ class NoteSidebar extends React.Component {
 
   constructor(props) {
     super(props);
+
+    this.state = { current: this.props.current };
   }
 
   componentWillMount() {
     this.props.fetchNotes();
+  }
+
+  componentWillReceiveProps(newState) {
+    this.setState({ current: newState.current });
   }
 
   render() {
@@ -25,7 +31,7 @@ class NoteSidebar extends React.Component {
                 key={note.id}
                 note={note}
                 deleteNote={this.props.deleteNote}
-                currentNote={this.props.match.params.noteId == note.id} />
+                currentNote={this.state.current.id == note.id} />
             ))}
           </ul>
         </div>

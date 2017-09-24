@@ -2,7 +2,13 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 class NoteSummaryItem extends React.Component {
+
+  getCasualTime() {
+
+  }
+
   render() {
+    debugger;
     const note = this.props.note;
     let className = "";
 

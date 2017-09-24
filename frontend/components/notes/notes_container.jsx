@@ -1,16 +1,16 @@
 import { connect } from 'react-redux';
+import { withRouter } from "react-router";
 
 import Notes from './notes';
-import { fetchNotes } from '../../actions/note_actions';
-import { withRouter } from 'react-router';
+import { fetchNote, deleteNote, createNote } from '../../actions/note_actions';
 
 const mapStateToProps = (state) => ({
-  notes: Object.values(state.entities.notes.all),
-  currentNote: state.entities.notes.current
+  current: state.entities.notes.current
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchNotes: () => dispatch(fetchNotes())
+  fetchNote: id => dispatch(fetchNote(id)),
+  deleteNote: id => dispatch(deleteNote(id))
 });
 
 export default withRouter(connect(

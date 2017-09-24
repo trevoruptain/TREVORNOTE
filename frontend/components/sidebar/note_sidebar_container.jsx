@@ -5,7 +5,8 @@ import NoteSidebar from './note_sidebar';
 import { fetchNotes, deleteNote, createNote } from '../../actions/note_actions';
 
 const mapStateToProps = (state) => ({
-  notes: Object.values(state.entities.notes.all)
+  notes: Object.values(state.entities.notes.all),
+  current: state.entities.notes.current
 });
 
 const mapDispatchToProps = dispatch => ({
