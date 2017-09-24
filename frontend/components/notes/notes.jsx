@@ -40,13 +40,13 @@ class Notes extends React.Component {
     const button = document.getElementById("save-button");
 
     if (this.toggled) {
-      navbar.classList.remove("navbar-go-to-zero");
-      sidebar.classList.remove("sidebar-go-to-zero");
+      navbar.classList.remove("navbar-move-over");
+      sidebar.classList.remove("sidebar-move-over");
       main.classList.remove("notes-move-over");
       button.classList.remove("you-too-button");
     } else {
-      navbar.classList.add("navbar-go-to-zero");
-      sidebar.classList.add("sidebar-go-to-zero");
+      navbar.classList.add("navbar-move-over");
+      sidebar.classList.add("sidebar-move-over");
       main.classList.add("notes-move-over");
       button.classList.add("you-too-button");
     }
@@ -89,7 +89,7 @@ class Notes extends React.Component {
                 <i className="fa fa-star" />
                 <i className="fa fa-trash" onClick={() => this.props.deleteNote(note.id)} />
               </div>
-              <i className="fa fa-expand green" onClick={e => this.handleResize(e)} />
+              <i className="fa fa-expand green resize-button" onClick={e => this.handleResize(e)} />
             </div>
             <div id="note-body">
               <form onSubmit={this.handleSubmit}>
