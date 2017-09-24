@@ -14,8 +14,3 @@
 //= require jquery_ujs
 //= require rails-ujs
 //= require_tree .
-
-setTimeout(() => {
-  const div = document.getElementById("notes-main");
-  div.classList.remove("css-transitions-only-after-page-load");
-}, 1000);

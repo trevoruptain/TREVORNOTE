@@ -31,7 +31,7 @@ const Root = ({ store }) => (
         <ProtectedRoute path="/tags" component={App} />
         <AuthRoute path="/login" component={SessionPage} />
         <AuthRoute path="/signup" component={SessionPage} />
-        <Route path="/" component={MainPage} />
+        <AuthRoute path="/" component={MainPage} />
       </Switch>
     </HashRouter>
   </Provider>

@@ -3,10 +3,6 @@ import { Link } from 'react-router-dom';
 
 class NoteSummaryItem extends React.Component {
 
-  getCasualTime() {
-
-  }
-
   render() {
     const note = this.props.note;
     let className = "";
@@ -21,7 +17,7 @@ class NoteSummaryItem extends React.Component {
           <div className="note-container">
             <h4>{note.title}</h4>
             <h5>{note.last_updated}</h5>
-            <p>{note.body}</p>
+            <p>{note.body.slice(0, 150)}</p>
             <div className="note-actions">
               <i className="fa fa-trash" onClick={() => this.props.deleteNote(note.id)}/>
               <i className="fa fa-star" />
