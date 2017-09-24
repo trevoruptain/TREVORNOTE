@@ -37,15 +37,18 @@ class Notes extends React.Component {
     const navbar = document.getElementById("navbar");
     const sidebar = document.getElementById("sidebar-container");
     const main = document.getElementById("notes-main");
+    const button = document.getElementById("save-button");
 
     if (this.toggled) {
       navbar.classList.remove("navbar-go-to-zero");
       sidebar.classList.remove("sidebar-go-to-zero");
       main.classList.remove("notes-move-over");
+      button.classList.remove("you-too-button");
     } else {
       navbar.classList.add("navbar-go-to-zero");
       sidebar.classList.add("sidebar-go-to-zero");
       main.classList.add("notes-move-over");
+      button.classList.add("you-too-button");
     }
 
     this.toggled = !this.toggled;
@@ -75,7 +78,7 @@ class Notes extends React.Component {
         );
       } else {
         return (
-          <div id="notes-main">
+          <div id="notes-main" className="css-transitions-only-after-page-load">
             <div id="notes-header">
               <div id="note-actions">
                 <i className="fa fa-star" />
@@ -89,7 +92,7 @@ class Notes extends React.Component {
                 <br />
                 <Textarea className="note-body" value={this.state.body} onChange={this.update("body")}/>
                 <br />
-                <input type="submit" className="save-button" value="Save"/>
+                <input type="submit" id="save-button" value="Save"/>
               </form>
             </div>
           </div>

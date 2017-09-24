@@ -61,8 +61,20 @@
  	border-collapse: collapse;
  	border-spacing: 0;
  }
+ input, input:focus, :focus {
+   outline: inherit;
+ }
 
  /*Global*/
+
+ .css-transitions-only-after-page-load {
+   transition: none !important;
+  -webkit-transition: none !important;
+  -moz-transition: none !important;
+  -ms-transition: none !important;
+  -o-transition: none !important;
+}
+
 
  /*Main Page*/
 
@@ -525,6 +537,13 @@ footer a:hover {
   padding-left: 100px;
 }
 
+#note-body:focus {
+    border-color: #cccccc;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    outline:none !important;
+}
+
 #note-body .title {
   font-size: 20px;
   font-weight: 100;
@@ -532,16 +551,21 @@ footer a:hover {
   margin-bottom: 30px;
 }
 
-#note-body textarea {
+#note-body textarea, #note-body textarea:focus {
   font-size: 12px;
   color: grey;
   width: 85%;
   border: none;
+  resize: none;
+  -webkit-appearance: none;
+  box-shadow: none;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
 }
 
 #note-body input, #note-body input:focus {
   border: none;
-  outline: none;
+  outline: none !important;
 }
 
 .navbar-go-to-zero {
@@ -563,7 +587,12 @@ footer a:hover {
   transition: all 1s;
 }
 
-.save-button {
+.you-too-button {
+  left: 249px !important;
+  transition: all 1s;
+}
+
+#save-button {
   position: absolute;
   bottom: 50px;
   left: 449px;
