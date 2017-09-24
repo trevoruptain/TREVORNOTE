@@ -11,6 +11,7 @@
 
 class Notebook < ApplicationRecord
   validates :user_id, :name, presence: true
+  validates_uniqueness_of :name, scope: [:user_id]
 
   has_many :notes
   belongs_to :user
