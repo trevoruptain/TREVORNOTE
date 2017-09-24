@@ -33,3 +33,11 @@ export const deleteNote = id => (
     url: `/api/notes/${id}`
   })
 );
+
+export const updateNote = note => (
+  $.ajax({
+    method: 'PATCH',
+    url: `/api/notes/${note.id}`,
+    data: {note}
+  })
+);

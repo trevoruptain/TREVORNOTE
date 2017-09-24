@@ -34,3 +34,7 @@ export const deleteNote = id => dispatch => (
 export const createNote = note => dispatch => (
   NoteApiUtil.createNote(note).then(newNote => dispatch(receiveNote(newNote)))
 );
+
+export const updateNote = note => dispatch => (
+  NoteApiUtil.updateNote(note).then(newNote => dispatch(receiveNote(newNote)))
+);

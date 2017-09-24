@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   namespace :api, defaults: {format: :json} do
     resource :users, only: [:create]
     resource :session, only: [:create, :destroy, :show]
-    resources :notes, only: [:index, :show, :create, :destroy]
+    resources :notes, only: [:index, :show, :create, :destroy, :update]
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

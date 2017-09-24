@@ -4,17 +4,26 @@ class Notes extends React.Component {
   constructor(props) {
     super(props);
     this.toggled = false;
+
+    this.state = {
+      title: "",
+      body: ""
+    };
+
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount() {
     if (this.props.match.params.noteId) {
-      this.props.fetchNote(this.props.match.params.noteId);
+      this.props.fetchNote(this.props.match.params.noteId)
+      .then(action => this.setState({title: action.note.title, body: action.note.body}));
     }
   }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.match.params.noteId && this.props.match.params.noteId !== nextProps.match.params.noteId) {
-      nextProps.fetchNote(nextProps.match.params.noteId);
+      nextProps.fetchNote(nextProps.match.params.noteId)
+      .then(action => this.setState({title: action.note.title, body: action.note.body}));
     }
   }
 
@@ -38,6 +47,22 @@ class Notes extends React.Component {
     this.toggled = !this.toggled;
   }
 
+  handleSubmit(event) {
+    event.preventDefault();
+
+    const noteId = this.props.current.id;
+
+    const note = Object.assign({}, this.state, {
+      id: noteId
+    });
+
+    this.props.updateNote(note);
+  }
+
+  update(property) {
+    return e => this.setState({ [property]: e.currentTarget.value });
+  }
+
   render() {
     const note = this.props.current;
       if (!note) {
@@ -55,10 +80,11 @@ class Notes extends React.Component {
               <i className="fa fa-expand green" onClick={e => this.handleResize(e)} />
             </div>
             <div id="note-body">
-              <form>
-                <input type="text" id="text" name="title" className="title" value={note.title} />
+              <form onSubmit={this.handleSubmit}>
+                <input type="text" className="title" value={this.state.title} onChange={this.update("title")} />
                 <br />
-                <input type="textarea" id="body" name="body" className="body" value={note.body} />
+                <input type="textarea" className="body" value={this.state.body} onChange={this.update("body")}/>
+                <input type="submit" className="save-button" />
               </form>
             </div>
           </div>

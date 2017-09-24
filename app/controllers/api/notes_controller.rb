@@ -15,6 +15,19 @@ class Api::NotesController < ApplicationController
     render :show
   end
 
+  def update
+    @note = current_user.notes.where(id: params[:id]).first
+    if @note
+      if @note.update(note_params)
+        render :show
+      else
+        render json: @note.errors.full_messages, status: 400
+      end
+    else
+      render json: ["That note does not exist"], status: 404
+    end
+  end
+
   def destroy
     @note = current_user.notes.where(id: params[:id]).first
     if @note
