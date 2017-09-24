@@ -1,21 +1,38 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import { Route } from 'react-router-dom';
-import store from '../store/store';
+import { AuthRoute, ProtectedRoute } from '../util/route_util';
+import {
+  Route,
+  Redirect,
+  Switch,
+  Link,
+  HashRouter
+} from 'react-router-dom';
 
-import NavBar from './nav/nav_bar';
-import NoteSidebarContainer from './sidebar/note_sidebar_container';
 import NotesContainer from './notes/notes_container';
+import MainPage from './main/main_page';
+import SessionPage from './session/session_page';
 
 const App = props => (
-  <div>
-    <NavBar />
-    <NoteSidebarContainer />
-    <NotesContainer />
-  </div>
+  <Switch>
+    <ProtectedRoute path="/notes/:noteId" component={NotesContainer} />
+    <ProtectedRoute path="/notes" component={NotesContainer} />
+    <ProtectedRoute path="/notebooks/:notebookId/notes/:noteId" component={NotesContainer} />
+    <ProtectedRoute path="/add-note" component={NotesContainer} />
+
+    <ProtectedRoute path="/notebooks/:notebookId/notes" component={NotesContainer} />
+    <ProtectedRoute path="/notebooks/:notebookId" component={NotesContainer} />
+    <ProtectedRoute path="/notebooks" component={NotesContainer} />
+
+    <ProtectedRoute path="/tags/:tagId/notes/:noteId" component={NotesContainer} />
+    <ProtectedRoute path="/tags/:tagId/notes" component={NotesContainer} />
+    <ProtectedRoute path="/tags/:tagId" component={NotesContainer} />
+    <ProtectedRoute path="/tags" component={NotesContainer} />
+
+    <AuthRoute path="/login" component={SessionPage} />
+    <AuthRoute path="/signup" component={SessionPage} />
+    <AuthRoute path="/" component={MainPage} />
+  </Switch>
 );
 
 export default App;
-
-//For Tags:
-// <Route exact path "/tags" component="{TagsOverlay}">

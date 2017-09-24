@@ -26,8 +26,6 @@ class Api::NotesController < ApplicationController
 
   def create
     @note = Note.create!(note_params)
-    @note.user_id = current_user.id
-    @note.body = ""
 
     if @note.save
       render :show

@@ -1,5 +1,7 @@
 import React from 'react';
 import Textarea from 'react-textarea-autosize';
+import NavBar from '../nav/nav_bar';
+import NoteSidebarContainer from '../sidebar/note_sidebar_container';
 
 class Notes extends React.Component {
   constructor(props) {
@@ -54,6 +56,28 @@ class Notes extends React.Component {
     this.toggled = !this.toggled;
   }
 
+  handleAddNote() {
+    const note = Object.assign({}, {
+      title: "",
+      body: "",
+      notebook_id: 1
+    });
+
+    // Don't forget to use real notebook id
+
+    const navbar = document.getElementById("navbar");
+    const sidebar = document.getElementById("sidebar-container");
+    navbar.classList.add("navbar-move-over");
+    sidebar.classList.add("sidebar-move-over");
+
+    this.props.createNote(note).then(newNote => this.setState({
+      title: newNote.title,
+      body: newNote.body,
+      current: newNote
+    })).then(() => this.props.history.push("/notes"));
+
+  }
+
   handleSubmit(event) {
     event.preventDefault();
 
@@ -80,32 +104,31 @@ class Notes extends React.Component {
     }, 20);
 
     const note = this.props.current;
-      if (!note) {
-        return (
-          <div>Loading...</div>
-        );
-      } else {
-        return (
-          <div id="notes-main" className="css-transitions-only-after-page-load">
-            <div id="notes-header">
-              <div id="note-actions">
-                <i className="fa fa-star" />
-                <i className="fa fa-trash" onClick={() => this.props.deleteNote(note.id)} />
-              </div>
-              <i className="fa fa-expand green resize-button" onClick={e => this.handleResize(e)} />
+
+    return (
+      <div>
+        <NavBar />
+        <NoteSidebarContainer />
+        <div id="notes-main" className="css-transitions-only-after-page-load">
+          <div id="notes-header">
+            <div id="note-actions">
+              <i className="fa fa-star" />
+              <i className="fa fa-trash" onClick={() => this.props.deleteNote(note.id)} />
             </div>
-            <div id="note-body">
-              <form onSubmit={this.handleSubmit}>
-                <input type="text" className="title" value={this.state.title} onChange={this.update("title")} />
-                <br />
-                <Textarea className="note-body" value={this.state.body} onChange={this.update("body")}/>
-                <br />
-                <input type="submit" id="save-button" value="Save"/>
-              </form>
-            </div>
+            <i className="fa fa-expand green resize-button" onClick={e => this.handleResize(e)} />
           </div>
-          );
-      }
+          <div id="note-body">
+            <form onSubmit={this.handleSubmit}>
+              <input type="text" className="title" value={this.state.title} onChange={this.update("title")} />
+              <br />
+              <Textarea className="note-body" value={this.state.body} onChange={this.update("body")}/>
+              <br />
+              <input type="submit" id="save-button" value="Save"/>
+            </form>
+          </div>
+        </div>
+      </div>
+      );
     }
 }
 

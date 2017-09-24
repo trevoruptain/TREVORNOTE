@@ -8,7 +8,8 @@ import { fetchNote,
          updateNote } from '../../actions/note_actions';
 
 const mapStateToProps = (state) => ({
-  current: state.entities.notes.current
+  current: state.entities.notes.current,
+  currentUser: state.session.currentUser
 });
 
 const mapDispatchToProps = dispatch => ({
