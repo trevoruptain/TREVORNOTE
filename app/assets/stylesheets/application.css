@@ -532,10 +532,11 @@ footer a:hover {
   margin-bottom: 30px;
 }
 
-#note-body .body {
+#note-body textarea {
   font-size: 12px;
   color: grey;
   width: 85%;
+  border: none;
 }
 
 #note-body input, #note-body input:focus {
@@ -559,5 +560,23 @@ footer a:hover {
 
 .notes-move-over {
   padding-left: 150px !important;
+  transition: all 1s;
+}
+
+.save-button {
+  position: absolute;
+  bottom: 50px;
+  left: 449px;
+  padding:10px;
+  background-color: #2dbe60;
+  color: #FFF;
+  border-radius: 5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 1s;
+}
+
+.save-button:hover {
+  background-color: #000;
   transition: all 1s;
 }

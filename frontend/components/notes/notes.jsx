@@ -1,4 +1,5 @@
 import React from 'react';
+import Textarea from 'react-textarea-autosize';
 
 class Notes extends React.Component {
   constructor(props) {
@@ -7,13 +8,14 @@ class Notes extends React.Component {
 
     this.state = {
       title: "",
-      body: ""
+      body: "",
+      current: this.props.current
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  componentDidMount() {
+  componentWillMount() {
     if (this.props.match.params.noteId) {
       this.props.fetchNote(this.props.match.params.noteId)
       .then(action => this.setState({title: action.note.title, body: action.note.body}));
@@ -23,7 +25,9 @@ class Notes extends React.Component {
   componentWillReceiveProps(nextProps) {
     if (nextProps.match.params.noteId && this.props.match.params.noteId !== nextProps.match.params.noteId) {
       nextProps.fetchNote(nextProps.match.params.noteId)
-      .then(action => this.setState({title: action.note.title, body: action.note.body}));
+      .then(action => this.setState({title: action.note.title, body: action.note.body, current: action.note}));
+    } else {
+      this.setState({title: nextProps.current.title, body: nextProps.current.body, current: nextProps.current});
     }
   }
 
@@ -83,8 +87,9 @@ class Notes extends React.Component {
               <form onSubmit={this.handleSubmit}>
                 <input type="text" className="title" value={this.state.title} onChange={this.update("title")} />
                 <br />
-                <input type="textarea" className="body" value={this.state.body} onChange={this.update("body")}/>
-                <input type="submit" className="save-button" />
+                <Textarea className="note-body" value={this.state.body} onChange={this.update("body")}/>
+                <br />
+                <input type="submit" className="save-button" value="Save"/>
               </form>
             </div>
           </div>
