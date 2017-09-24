@@ -8,15 +8,21 @@
 
 #Users
 
-4.times do
-  user_name = Faker::StarWars.unique.character
-  user_email = Faker::Internet.email
+User.create(email: "iamyourfather@deathstar.com",
+            friendly_name: "iamyourfather",
+            password: "darth_vader")
 
-  User.create(email: user_email,
-              friendly_name: user_name,
-              password: "password")
-end
+User.create(email: "ihatesand@naboo.com",
+            friendly_name: "ihatesand",
+            password: "anakin_skywalker")
 
+User.create(email: "oochowiemyhand@tatooine.com",
+            friendly_name: "oochowiemyhand",
+            password: "luke_skywalker")
+
+User.create(email: "organa@alderaan.com",
+            friendly_name: "organa",
+            password: "princess_leia")
 #Notes
 
 40.times do |i|
