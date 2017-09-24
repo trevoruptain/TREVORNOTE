@@ -11,6 +11,7 @@ import {
 import MainPage from './main/main_page';
 import SessionPage from './session/session_page';
 import App from './app';
+import AddNoteContainer from './overlays/add_note_container';
 
 const Root = ({ store }) => (
   <Provider store={ store }>
@@ -22,6 +23,7 @@ const Root = ({ store }) => (
           path="/notebooks/:notebookId/notes/:noteId"
           component={App}
         />
+        <ProtectedRoute exact path="/add-note" component={AddNoteContainer} />
         <ProtectedRoute path="/notebooks/:notebookId/notes" component={App} />
         <ProtectedRoute path="/notebooks/:notebookId" component={App} />
         <ProtectedRoute path="/notebooks" component={App} />

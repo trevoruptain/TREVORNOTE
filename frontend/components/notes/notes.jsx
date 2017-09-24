@@ -73,7 +73,10 @@ class Notes extends React.Component {
   render() {
     setTimeout(() => {
       const div = document.getElementById("notes-main");
-      div.classList.remove("css-transitions-only-after-page-load");
+
+      if (div) {
+        div.classList.remove("css-transitions-only-after-page-load");
+      }
     }, 20);
 
     const note = this.props.current;
