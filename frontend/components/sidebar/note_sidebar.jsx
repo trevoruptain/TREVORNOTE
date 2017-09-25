@@ -6,7 +6,10 @@ class NoteSidebar extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { current: this.props.current };
+    this.state = {
+      current: this.props.current,
+      notes: this.props.notes
+    };
   }
 
   componentWillMount() {
@@ -14,7 +17,7 @@ class NoteSidebar extends React.Component {
   }
 
   componentWillReceiveProps(newState) {
-    this.setState({ current: newState.current });
+    this.setState({ current: newState.current, notes: newState.notes });
   }
 
   render() {
@@ -26,7 +29,7 @@ class NoteSidebar extends React.Component {
         </div>
         <div id="note-list">
           <ul>
-            {this.props.notes.map(note => (
+            {this.state.notes.map(note => (
               <NoteSummaryItem
                 key={note.id}
                 note={note}

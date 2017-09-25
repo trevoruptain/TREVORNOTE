@@ -25,17 +25,20 @@ class Notes extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.match.params.noteId && this.props.match.params.noteId !== nextProps.match.params.noteId) {
-      nextProps.fetchNote(nextProps.match.params.noteId)
-      .then(action => this.setState({title: action.note.title, body: action.note.body, current: action.note}));
+    if (nextProps.match.path === "/add-note") {
+      this.toggleResize();
+      this.props.createNote({title: null, body: null, notebook_id: 1});
+      this.props.history.push("/notes");
+    } else if (nextProps.match.params.noteId) {
+      if (this.props.match.params.noteId !== nextProps.match.params.noteId) {
+        nextProps.fetchNote(nextProps.match.params.noteId);
+      }
     } else {
       this.setState({title: nextProps.current.title, body: nextProps.current.body, current: nextProps.current});
     }
   }
 
-  handleResize(event) {
-    event.preventDefault();
-
+  toggleResize() {
     const navbar = document.getElementById("navbar");
     const sidebar = document.getElementById("sidebar-container");
     const main = document.getElementById("notes-main");
@@ -56,28 +59,6 @@ class Notes extends React.Component {
     this.toggled = !this.toggled;
   }
 
-  handleAddNote() {
-    const note = Object.assign({}, {
-      title: "",
-      body: "",
-      notebook_id: 1
-    });
-
-    // Don't forget to use real notebook id
-
-    const navbar = document.getElementById("navbar");
-    const sidebar = document.getElementById("sidebar-container");
-    navbar.classList.add("navbar-move-over");
-    sidebar.classList.add("sidebar-move-over");
-
-    this.props.createNote(note).then(newNote => this.setState({
-      title: newNote.title,
-      body: newNote.body,
-      current: newNote
-    })).then(() => this.props.history.push("/notes"));
-
-  }
-
   handleSubmit(event) {
     event.preventDefault();
 
@@ -87,7 +68,15 @@ class Notes extends React.Component {
       id: noteId
     });
 
-    this.props.updateNote(note);
+    if (this.toggled) {
+      this.toggleResize();
+    }
+
+    this.props.updateNote(note).then(updatedNote => {
+      this.setState({title: updatedNote.title,
+                     body: updatedNote.body,
+                     current: updatedNote});
+    });
   }
 
   update(property) {
@@ -109,21 +98,36 @@ class Notes extends React.Component {
       <div>
         <NavBar />
         <NoteSidebarContainer />
-        <div id="notes-main" className="css-transitions-only-after-page-load">
+        <div id="notes-main"
+             className="css-transitions-only-after-page-load">
           <div id="notes-header">
             <div id="note-actions">
               <i className="fa fa-star" />
-              <i className="fa fa-trash" onClick={() => this.props.deleteNote(note.id)} />
+              <i className="fa fa-trash"
+                 onClick={() => {
+                   this.props.deleteNote(note.id);
+                 }} />
             </div>
-            <i className="fa fa-expand green resize-button" onClick={e => this.handleResize(e)} />
+            <i className="fa fa-expand green resize-button"
+               onClick={() => this.toggleResize()} />
           </div>
           <div id="note-body">
             <form onSubmit={this.handleSubmit}>
-              <input type="text" className="title" value={this.state.title} onChange={this.update("title")} />
+              <input type="text"
+                     className="title"
+                     value={this.state.title}
+                     onChange={this.update("title")}
+                     placeholder="Title your note"
+                     autoFocus />
               <br />
-              <Textarea className="note-body" value={this.state.body} onChange={this.update("body")}/>
+              <Textarea className="note-body"
+                        value={this.state.body}
+                        onChange={this.update("body")}
+                        placeholder="Drag files here or just start typing..." />
               <br />
-              <input type="submit" id="save-button" value="Save"/>
+              <input type="submit"
+                     id="save-button"
+                     value="Save"/>
             </form>
           </div>
         </div>

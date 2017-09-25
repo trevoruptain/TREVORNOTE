@@ -19,7 +19,11 @@ class NoteSummaryItem extends React.Component {
             <h5>{note.last_updated}</h5>
             <p>{note.body.slice(0, 150)}</p>
             <div className="note-actions">
-              <i className="fa fa-trash" onClick={() => this.props.deleteNote(note.id)}/>
+              <i className="fa fa-trash" onClick={() => {
+                  this.props.deleteNote(note.id).then(() => {
+                    window.location = "/#/notes";
+                  });
+                }}/>
               <i className="fa fa-star" />
             </div>
           </div>

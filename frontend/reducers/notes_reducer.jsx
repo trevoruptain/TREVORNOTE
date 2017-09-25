@@ -11,7 +11,7 @@ const NotesReducer = (state = { all: {}, current: null }, action) => {
     case RECEIVE_NOTES:
       newState.all = action.notes;
       if (!state.current) {
-        newState.current = Object.values(action.notes)[0];
+        newState.current = Object.values(action.notes).reverse()[0];
       }
       return newState;
     case RECEIVE_NOTE:
