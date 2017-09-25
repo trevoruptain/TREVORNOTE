@@ -3,11 +3,11 @@ import ReactDOM from 'react-dom';
 import Root from './components/root';
 import configureStore from './store/store';
 
-import {fetchNote} from './util/note_api_util';
+import {fetchNotes} from './util/note_api_util';
 import {signup} from './util/session_api_util';
 import {logout} from './util/session_api_util';
 
-window.fetchNote = fetchNote;
+window.fetchNotes = fetchNotes;
 window.signup = signup;
 window.logout = logout;
 

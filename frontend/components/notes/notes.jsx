@@ -7,35 +7,32 @@ class Notes extends React.Component {
   constructor(props) {
     super(props);
     this.toggled = false;
-
-    this.state = {
-      title: "",
-      body: "",
-      current: this.props.current
-    };
-
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentWillMount() {
+    this.props.fetchNotes();
+
     if (this.props.match.params.noteId) {
-      this.props.fetchNote(this.props.match.params.noteId)
-      .then(action => this.setState({title: action.note.title, body: action.note.body}));
+      this.props.fetchNote(this.props.match.params.noteId);
+    }
+
+    if (this.props.location.pathname === "/add-note") {
+      this.toggleResize();
     }
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.match.path === "/add-note") {
+    if (nextProps.location.pathname === "/notes" && !this.props.location.pathname === "/notes") {
+      this.props.fetchNotes();
+    } else if (nextProps.location.pathname === "/add-note") {
       this.toggleResize();
-      this.props.createNote({title: "", body: "", notebook_id: 1});
-      this.props.history.push("/notes");
     } else if (nextProps.match.params.noteId) {
       if (this.props.match.params.noteId !== nextProps.match.params.noteId) {
-        nextProps.fetchNote(nextProps.match.params.noteId)
-        .then(action => this.setState({title: action.note.title, body: action.note.body, current: action.note}));
+        this.props.fetchNote(nextProps.match.params.noteId);
       }
-    } else {
-      this.setState({title: nextProps.current.title, body: nextProps.current.body, current: nextProps.current});
+    } else if (!this.props.note) {
+      this.props.fetchNote(nextProps.note.id);
     }
   }
 
@@ -65,7 +62,7 @@ class Notes extends React.Component {
 
     const noteId = this.props.current.id;
 
-    const note = Object.assign({}, this.state, {
+    const note = Object.assign({}, this.props.current, {
       id: noteId
     });
 
@@ -74,9 +71,7 @@ class Notes extends React.Component {
     }
 
     this.props.updateNote(note).then(updatedNote => {
-      this.setState({title: updatedNote.title,
-                     body: updatedNote.body,
-                     current: updatedNote});
+      this.updateProps(updatedNote);
     });
   }
 
@@ -93,47 +88,53 @@ class Notes extends React.Component {
       }
     }, 20);
 
-    const note = this.props.current;
+    const note = this.props.note;
 
-    return (
-      <div>
-        <NavBar />
-        <NoteSidebarContainer />
-        <div id="notes-main"
-             className="css-transitions-only-after-page-load">
-          <div id="notes-header">
-            <div id="note-actions">
-              <i className="fa fa-star" />
-              <i className="fa fa-trash"
-                 onClick={() => {
-                   this.props.deleteNote(note.id);
-                 }} />
+    if (!note) {
+      return (
+        <div></div>
+      );
+    } else {
+      return (
+        <div>
+          <NavBar />
+          <NoteSidebarContainer />
+          <div id="notes-main"
+               className="css-transitions-only-after-page-load">
+            <div id="notes-header">
+              <div id="note-actions">
+                <i className="fa fa-star" />
+                <i className="fa fa-trash"
+                   onClick={() => {
+                     this.props.deleteNote(note.id);
+                   }} />
+              </div>
+              <i className="fa fa-expand green resize-button"
+                 onClick={() => this.toggleResize()} />
             </div>
-            <i className="fa fa-expand green resize-button"
-               onClick={() => this.toggleResize()} />
-          </div>
-          <div id="note-body">
-            <form onSubmit={this.handleSubmit}>
-              <input type="text"
-                     className="title"
-                     value={this.state.title}
-                     onChange={this.update("title")}
-                     placeholder="Title your note"
-                     autoFocus />
-              <br />
-              <Textarea className="note-body"
-                        value={this.state.body}
-                        onChange={this.update("body")}
-                        placeholder="Drag files here or just start typing..." />
-              <br />
-              <input type="submit"
-                     id="save-button"
-                     value="Save"/>
-            </form>
+            <div id="note-body">
+              <form onSubmit={this.handleSubmit}>
+                <input type="text"
+                       className="title"
+                       value={note.title}
+                       onChange={this.update("title")}
+                       placeholder="Title your note"
+                       autoFocus />
+                <br />
+                <Textarea className="note-body"
+                          value={note.body}
+                          onChange={this.update("body")}
+                          placeholder="Drag files here or just start typing..." />
+                <br />
+                <input type="submit"
+                       id="save-button"
+                       value="Save"/>
+              </form>
+            </div>
           </div>
         </div>
-      </div>
-      );
+        );
+      }
     }
 }
 
