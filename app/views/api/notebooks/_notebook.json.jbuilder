@@ -1,2 +1,4 @@
-json.extract! notebook, :id, :name, :user_id, :notes
-json.noteIds notebook.notes.ids
+json.extract! notebook, :id, :name, :user_id
+json.notes do
+  json.array! notebook.notes.ids
+end

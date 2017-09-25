@@ -1,15 +1,15 @@
 import { connect } from 'react-redux';
 import { withRouter } from "react-router";
-
-import Notes from './notes';
 import { fetchNote,
          fetchNotes,
          deleteNote,
          createNote,
          updateNote } from '../../actions/note_actions';
 
-const mapStateToProps = (state) => ({
-  note: state.entities.notes.current,
+import Notes from './notes';
+
+const mapStateToProps = state => ({
+  currentNote: state.entities.notes.currentNote,
   notes: state.entities.notes.all
 });
 

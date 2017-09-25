@@ -2,12 +2,13 @@ class Api::NotebooksController < ApplicationController
   before_action :require_logged_in
 
   def index
-    @notebooks = current_user.notebooks
+    debugger
+    @notebooks = current_user.notebooks.sort_by(&:name)
     render :index
   end
 
   def show
-    @notebook = current_user.notebooks.where(id: params[:id]).first
+    @notebook = current_user.notebooks.find_by(id: params[:id])
 
     if @notebook
       render :show
@@ -23,18 +24,18 @@ class Api::NotebooksController < ApplicationController
     if @notebook.save
       render :show
     else
-      render json: @notebook.errors.full_messages, status: 400
+      render json: @notebook.errors.full_messages, status: 422
     end
   end
 
   def update
-    @notebook = current_user.notebooks.where(id: params[:id]).first
+    @notebook = current_user.notebooks.find_by(id: params[:id])
 
     if @notebook
-      if @notebook.update(notebook_params)
+      if @notebook.update_attributes(notebook_params)
         render :show
       else
-        render json: @notebook.errors.full_messages, status: 400
+        render json: @notebook.errors.full_messages, status: 422
       end
     else
       render json: ["That's not yours"], status: 404

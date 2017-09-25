@@ -13,6 +13,6 @@ class Notebook < ApplicationRecord
   validates :user_id, :name, presence: true
   validates_uniqueness_of :name, scope: [:user_id]
 
-  has_many :notes
+  has_many :notes, dependent: :destroy
   belongs_to :user
 end
