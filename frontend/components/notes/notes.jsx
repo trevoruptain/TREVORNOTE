@@ -27,7 +27,7 @@ class Notes extends React.Component {
   componentWillReceiveProps(nextProps) {
     if (nextProps.match.path === "/add-note") {
       this.toggleResize();
-      this.props.createNote({title: null, body: null, notebook_id: 1});
+      this.props.createNote({title: "", body: "", notebook_id: 1});
       this.props.history.push("/notes");
     } else if (nextProps.match.params.noteId) {
       if (this.props.match.params.noteId !== nextProps.match.params.noteId) {

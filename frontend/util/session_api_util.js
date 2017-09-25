@@ -23,7 +23,7 @@ export const logout = () => (
 
 export const dummyLogin = () => {
   const randomNum = Math.floor(Math.random() * 4);
-  const dummyUser = masterList[randomNum];
+  const dummyUser = masterList[0];
 
   return $.ajax({
     method: 'POST',
