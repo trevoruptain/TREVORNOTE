@@ -20,7 +20,7 @@ const NotesReducer = (state = { all: {}, current: null }, action) => {
       return newState;
     case REMOVE_NOTE:
       delete newState.all[action.note.id];
-      newState.current = Object.values(state.all)[0];
+      newState.current = Object.values(state.all).reverse()[0];
       return newState;
     default:
       return state;

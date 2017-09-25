@@ -545,14 +545,14 @@ footer a:hover {
     outline:none !important;
 }
 
-#note-body .title {
+#note-body .title, #note-body input::placeholder {
   font-size: 20px;
   font-weight: 100;
   color: #2dbe60;
   margin-bottom: 30px;
 }
 
-#note-body textarea, #note-body textarea:focus {
+#note-body textarea, #note-body textarea:focus, #note-body textarea::placeholder {
   font-size: 12px;
   color: grey;
   width: 85%;
@@ -615,26 +615,4 @@ footer a:hover {
   position: absolute;
   top: 10 px;
   right: 10px;
-}
-
-/*Overlays*/
-
-#overlay-container {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: rgba(255, 255, 255, 0.5);
-  z-index: 2;
-}
-
-#overlay-form {
-  width: 500px;
-  height: 600px;
-  background-color: yellow;
-  z-index: 3;
 }

@@ -31,7 +31,8 @@ class Notes extends React.Component {
       this.props.history.push("/notes");
     } else if (nextProps.match.params.noteId) {
       if (this.props.match.params.noteId !== nextProps.match.params.noteId) {
-        nextProps.fetchNote(nextProps.match.params.noteId);
+        nextProps.fetchNote(nextProps.match.params.noteId)
+        .then(action => this.setState({title: action.note.title, body: action.note.body, current: action.note}));
       }
     } else {
       this.setState({title: nextProps.current.title, body: nextProps.current.body, current: nextProps.current});
