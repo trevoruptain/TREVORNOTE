@@ -2,7 +2,6 @@ class Api::NotebooksController < ApplicationController
   before_action :require_logged_in
 
   def index
-    debugger
     @notebooks = current_user.notebooks.sort_by(&:name)
     render :index
   end

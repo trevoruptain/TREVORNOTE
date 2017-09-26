@@ -6,6 +6,8 @@ import { fetchNote,
          createNote,
          updateNote } from '../../actions/note_actions';
 
+import { fetchNotebooks } from '../../actions/notebook_actions';
+
 import Notes from './notes';
 
 const mapStateToProps = state => ({
@@ -18,7 +20,8 @@ const mapDispatchToProps = dispatch => ({
   fetchNotes: () => dispatch(fetchNotes()),
   deleteNote: id => dispatch(deleteNote(id)),
   updateNote: note => dispatch(updateNote(note)),
-  createNote: note => dispatch(createNote(note))
+  createNote: note => dispatch(createNote(note)),
+  fetchNotebooks: () => dispatch(fetchNotebooks())
 });
 
 export default withRouter(connect(

@@ -67,13 +67,13 @@
 
  /*Global*/
 
- .css-transitions-only-after-page-load {
+ /*.css-transitions-only-after-page-load {
    transition: none !important;
   -webkit-transition: none !important;
   -moz-transition: none !important;
   -ms-transition: none !important;
   -o-transition: none !important;
-}
+}*/
 
 
  /*Main Page*/
@@ -325,6 +325,7 @@ footer a:hover {
   -o-box-sizing:      border-box;
   box-sizing:         border-box;
   transition: all 1s ease-out;
+  z-index: 99;
 }
 
 #navbar img {
@@ -615,4 +616,102 @@ footer a:hover {
   position: absolute;
   top: 10 px;
   right: 10px;
+}
+
+/*Overlays*/
+
+#notebook-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(255, 255, 255, 0.5);
+  z-index: 3;
+}
+
+#notebooks-detail {
+  position: absolute;
+  top: 0;
+  left: -300px;
+  height: 100vh;
+  width: 350px;
+  background-color: #FFF;
+  border-right: solid 1px #dedede;
+  z-index: 5;
+  overflow-y: scroll;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+#notebooks-detail h2 {
+  font-size: 16px;
+  text-transform: uppercase;
+  color: grey;
+  font-weight: 100;
+  letter-spacing: 5px;
+}
+
+#notebooks-detail a {
+  text-decoration: none;
+}
+
+.notebook-detail-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  border-bottom: solid 1px #dedede;
+}
+
+.notebook-detail-header i {
+  color: #2DBE60;
+  cursor: pointer;
+}
+
+#note-short-summary {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  border-bottom: solid 1px #dedede;
+  background-color: #FFF;
+  transition: background-color 0.1s;
+  color: grey;
+}
+
+#note-short-summary:hover {
+  background-color: #2DBE60;
+  transition: all 0.1s;
+  color: #FFF;
+}
+
+.icon-holder i {
+  color: #FFF !important;
+  cursor: pointer;
+}
+
+#note-short-summary h3 {
+  font-size: 12px;
+  font-weight: 400;
+}
+
+#note-short-summary p {
+  font-size: 10px;
+  font-weight: 300;
+}
+
+.icon-holder {
+  width: 40px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.come-on-in-sidebar {
+  top: 0 !important;
+  left: 49px !important;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
 }

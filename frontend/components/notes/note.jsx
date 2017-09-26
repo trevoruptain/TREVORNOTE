@@ -19,8 +19,7 @@ class Note extends React.Component {
   componentWillReceiveProps(nextProps) {
     if (nextProps.match.path === "/add-note" && this.props.match.path !== "/add-note") {
       this.toggleResize();
-      this.props.createNote(Object.assign({}, {title: "", body: "", notebook_id: 1}));
-      //Remember to add real notebook id
+      this.props.createNote(Object.assign({}, {title: "", body: "", notebook_id: this.props.currentNotebook.id}));
     } else if (!this.props.currentNote || this.props.currentNote.id !== nextProps.currentNote.id) {
       this.setState({ title: nextProps.currentNote.title,
                       body: nextProps.currentNote.body });
@@ -65,7 +64,7 @@ class Note extends React.Component {
     this.props.updateNote(note)
     .then(() => {
       if (this.props.match.path === "/add-note") {
-        this.props.history.push(`/notes/${note.id}`);  
+        this.props.history.push(`/notes/${note.id}`);
       }
     });
   }
@@ -75,6 +74,14 @@ class Note extends React.Component {
   }
 
   render() {
+    // setTimeout(() => {
+    //   const div = document.getElementById("notes-main");
+    //
+    //   if (div) {
+    //     div.classList.remove("css-transitions-only-after-page-load");
+    //   }
+    // }, 20);
+
     return (
       <div id="notes-main"
            className="css-transitions-only-after-page-load">

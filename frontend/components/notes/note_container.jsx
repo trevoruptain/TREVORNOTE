@@ -5,7 +5,8 @@ import { withRouter } from 'react-router';
 import Note from './note';
 
 const mapStateToProps = state => ({
-  currentNote: state.entities.notes.currentNote
+  currentNote: state.entities.notes.currentNote,
+  currentNotebook: state.entities.notebooks.currentNotebook
 });
 
 const mapDispatchToProps = dispatch => ({

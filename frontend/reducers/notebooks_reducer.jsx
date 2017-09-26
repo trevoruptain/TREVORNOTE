@@ -4,27 +4,31 @@ import {
   REMOVE_NOTEBOOK
 } from '../actions/notebook_actions';
 
-const NotesReducer = (state = { all: {}, current: null }, action) => {
+const NotebooksReducer = (state = { all: {}, currentNotebook: null }, action) => {
   Object.freeze(state);
   let newState = Object.assign({}, state);
   switch(action.type) {
     case RECEIVE_NOTEBOOKS:
       newState.all = action.notebooks;
-      if (!state.current) {
-        newState.current = Object.values(action.notebooks)[0];
+      if (!state.currentNotebook) {
+        newState.currentNotebook = Object.values(action.notebooks)[0];
       }
       return newState;
     case RECEIVE_NOTEBOOK:
       newState.all[action.notebook.id] = action.notebook;
-      newState.current = action.notebook;
+      newState.currentNotebook = action.notebook;
       return newState;
     case REMOVE_NOTEBOOK:
-      delete newState.all[action.notebook.id];
-      newState.current = Object.values(state.all)[0];
+      for(var key in newState.all) {
+        if (newState.all[key].id == action.notebook.id) {
+            delete newState.all[key];
+        }
+      }
+      newState.currentNotebook = Object.values(state.all)[0];
       return newState;
     default:
       return state;
   }
 };
 
-export default NotesReducer;
+export default NotebooksReducer;
