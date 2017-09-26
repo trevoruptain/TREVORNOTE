@@ -325,7 +325,7 @@ footer a:hover {
   -o-box-sizing:      border-box;
   box-sizing:         border-box;
   transition: all 1s ease-out;
-  z-index: 99;
+  z-index: 6;
 }
 
 #navbar img {
@@ -714,4 +714,58 @@ footer a:hover {
   -moz-transition: all 0.3s ease;
   -o-transition: all 0.3s ease;
   transition: all 0.3s ease;
+}
+
+/*Modals*/
+
+.modal-icon {
+  font-size: 30px !important;
+  color: grey;
+  margin-bottom:10px;
+}
+
+.ReactModalPortal h3 {
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 3px;
+  margin: 10px 0;
+  color: grey;
+}
+
+.ReactModalPortal hr {
+  width: 100px;
+  color: grey;
+}
+
+.ReactModalPortal input {
+  margin: 30px 0 50px 0;
+  border: none;
+  width: 310px;
+  font-size: 40px;
+  font-weight: 200;
+}
+
+.ReactModalPortal button {
+  padding: 5px 10px;
+  border: solid 1px #2DBE60;
+  border-radius: 5px;
+  background-color: #2DBE60;
+  color: #FAFAFA;
+  margin: 0 10px;
+  cursor: pointer;
+}
+
+.ReactModalPortal button:hover {
+  background-color: #28a955;
+}
+
+.ReactModalPortal button:first-of-type {
+  border: solid 1px grey;
+  background-color: #b2b2b2;
+  color: #050505;
+}
+
+.ReactModalPortal button:first-of-type:hover {
+  background-color: #999999;
 }

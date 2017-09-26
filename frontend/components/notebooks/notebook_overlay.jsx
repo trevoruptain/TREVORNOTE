@@ -23,6 +23,7 @@ class NotebookOverlay extends React.Component {
         <div id="notebook-overlay" onClick={e => this.handleClick(e)} />
           <NotebooksDetail
             notebooks={this.props.notebooks}
+            createNotebook={this.props.createNotebook}
             deleteNotebook={this.props.deleteNotebook} />
       </div>
     );
