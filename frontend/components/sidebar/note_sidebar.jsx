@@ -32,6 +32,7 @@ class NoteSidebar extends React.Component {
             {this.state.notes.map(note => (
               <NoteSummaryItem
                 key={note.id}
+                type="note"
                 note={note}
                 deleteNote={this.props.deleteNote}
                 currentNote={this.props.currentNote.id == note.id} />

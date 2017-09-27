@@ -20,7 +20,7 @@ class Note extends React.Component {
     if (nextProps.match.path === "/add-note" && this.props.match.path !== "/add-note") {
       this.toggleResize();
       this.props.createNote(Object.assign({}, {title: "", body: "", notebook_id: this.props.currentNotebook.id}));
-    } else if (!this.props.currentNote || this.props.currentNote.id !== nextProps.currentNote.id) {
+    } else if (nextProps.currentNote && !this.props.currentNote || this.props.currentNote.id !== nextProps.currentNote.id) {
       this.setState({ title: nextProps.currentNote.title,
                       body: nextProps.currentNote.body });
     }

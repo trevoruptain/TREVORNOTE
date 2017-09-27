@@ -12,7 +12,7 @@ class NoteSummaryItem extends React.Component {
     }
 
     return (
-      <Link to={`/notes/${note.id}`}>
+      <Link to={`/${this.props.type}/${note.id}`}>
         <li className={`note-summary-item ${className}`}>
           <div className="note-container">
             <h4>{note.title}</h4>
@@ -21,9 +21,7 @@ class NoteSummaryItem extends React.Component {
             <div className="note-actions">
               <i className="fa fa-trash" onClick={e => {
                   e.preventDefault();
-                  this.props.deleteNote(note.id).then(() => {
-                    window.location = "/#/notes";
-                  });
+                  this.props.deleteNote(note.id);
                 }}/>
               <i className="fa fa-star" />
             </div>

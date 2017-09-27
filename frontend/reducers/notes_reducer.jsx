@@ -10,9 +10,7 @@ const NotesReducer = (state = { all: {}, currentNote: null }, action) => {
   switch(action.type) {
     case RECEIVE_NOTES:
       newState.all = action.notes;
-      if (!state.currentNote) {
-        newState.currentNote = Object.values(action.notes).reverse()[0];
-      }
+      newState.currentNote = Object.values(action.notes).reverse()[0];
       return newState;
     case RECEIVE_NOTE:
       newState.all[action.note.id] = action.note;

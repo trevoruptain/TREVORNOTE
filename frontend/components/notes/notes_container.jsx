@@ -4,9 +4,10 @@ import { fetchNote,
          fetchNotes,
          deleteNote,
          createNote,
-         updateNote } from '../../actions/note_actions';
+         updateNote,
+         fetchNotesByNotebook } from '../../actions/note_actions';
 
-import { fetchNotebooks } from '../../actions/notebook_actions';
+import { fetchNotebooks, fetchNotebook } from '../../actions/notebook_actions';
 
 import Notes from './notes';
 
@@ -21,7 +22,9 @@ const mapDispatchToProps = dispatch => ({
   deleteNote: id => dispatch(deleteNote(id)),
   updateNote: note => dispatch(updateNote(note)),
   createNote: note => dispatch(createNote(note)),
-  fetchNotebooks: () => dispatch(fetchNotebooks())
+  fetchNotebooks: () => dispatch(fetchNotebooks()),
+  fetchNotebook: id => dispatch(fetchNotebook(id)),
+  fetchNotesByNotebook: id => dispatch(fetchNotesByNotebook(id))
 });
 
 export default withRouter(connect(
