@@ -325,7 +325,7 @@ footer a:hover {
   -o-box-sizing:      border-box;
   box-sizing:         border-box;
   transition: all 1s ease-out;
-  z-index: 6;
+  z-index: 100;
 }
 
 #navbar img {
@@ -384,6 +384,7 @@ footer a:hover {
   background-color: #f8f8f8;
   border-right: 1px solid #ececec;
   transition: all 1s;
+  z-index: 10;
 }
 
 #note-header {
@@ -593,6 +594,12 @@ footer a:hover {
   outline: none !important;
 }
 
+#note-body .title {
+  position: absolute;
+  top: 100px;
+  z-index: 9;
+}
+
 .navbar-move-over {
   width: 0 !important;
   top: 0 !important;
@@ -650,7 +657,6 @@ footer a:hover {
   width: 100vw;
   height: 100vh;
   background-color: rgba(255, 255, 255, 0.5);
-  z-index: 3;
 }
 
 #notebooks-detail {
@@ -667,6 +673,7 @@ footer a:hover {
   -moz-transition: all 0.3s ease;
   -o-transition: all 0.3s ease;
   transition: all 0.3s ease;
+  z-index: 98;
 }
 
 #notebooks-detail h2 {
@@ -791,4 +798,35 @@ footer a:hover {
 
 .ReactModalPortal button:first-of-type:hover {
   background-color: #999999;
+}
+
+/*Quill*/
+
+.quill strong {
+  font-weight: 700;
+}
+
+.quill i {
+  font-style: italic;
+}
+
+.quill sub {
+  vertical-align: sub;
+}
+
+.quill sup {
+  vertical-align: super;
+}
+
+.ql-snow {
+  border: none !important;
+}
+
+.ql-editor {
+  padding: 60px 0 !important;
+}
+
+.ql-toolbar.ql-snow {
+  padding: 0px !important;
+  margin-left: -8px;
 }

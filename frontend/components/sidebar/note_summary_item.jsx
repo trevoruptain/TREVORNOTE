@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import ReactHtmlParser from 'react-html-parser';
 
 class NoteSummaryItem extends React.Component {
 
@@ -17,7 +18,7 @@ class NoteSummaryItem extends React.Component {
           <div className="note-container">
             <h4>{note.title}</h4>
             <h5>{note.last_updated}</h5>
-            <p>{note.body.slice(0, 150)}</p>
+            <p>{ReactHtmlParser(note.body.slice(0, 150))}</p>
             <div className="note-actions">
               <i className="fa fa-trash" onClick={e => {
                   e.preventDefault();

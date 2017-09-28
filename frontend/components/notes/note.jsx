@@ -1,5 +1,23 @@
 import React from 'react';
 import Textarea from 'react-textarea-autosize';
+import ReactQuill from 'react-quill';
+
+const toolBarOpts = [
+  [{ font: [] }],
+  [{ size: ["small", false, "large", "huge"] }], // custom dropdown
+  ["bold", "italic", "underline", "strike"], // toggled buttons
+  [{ color: [] }, { background: [] }], // dropdown with defaults from theme
+  ["blockquote", "code-block"],
+  [{ align: [] }],
+  [{ list: "ordered" }, { list: "bullet" }],
+  [{ script: "sub" }, { script: "super" }], // superscript/subscript
+  ["clean"], // remove formatting button
+  ["link", "image", "video", "formula"] // misc
+];
+
+const modules = {
+  toolbar: toolBarOpts
+};
 
 class Note extends React.Component {
 
@@ -14,6 +32,7 @@ class Note extends React.Component {
     this.toggled = false;
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -73,8 +92,12 @@ class Note extends React.Component {
     });
   }
 
-  update(property) {
-    return e => this.setState({ [property]: e.currentTarget.value });
+  update() {
+    return e => this.setState({ title: e.currentTarget.value });
+  }
+
+  handleChange(value) {
+    this.setState({body: value});
   }
 
   render() {
@@ -111,9 +134,10 @@ class Note extends React.Component {
                    placeholder="Title your note"
                    autoFocus />
             <br />
-            <Textarea className="note-body"
+            <ReactQuill className="note-body"
                       value={this.state.body}
-                      onChange={this.update("body")}
+                      onChange={this.handleChange}
+                      modules={modules}
                       placeholder="Drag files here or just start typing..." />
             <br />
             <input type="submit"
