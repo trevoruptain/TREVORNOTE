@@ -13,7 +13,7 @@ const overlayStyles = {
     justifyContent    : 'center',
     alignItems        : 'center',
     backgroundColor   : '#FFF',
-    zIndex            : 6
+    zIndex            : 1000
   },
   content : {
     position          : 'relative',

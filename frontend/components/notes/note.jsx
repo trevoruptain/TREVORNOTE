@@ -26,11 +26,14 @@ class Note extends React.Component {
     this.state = {
       title: "",
       body: "",
+      notebook: {}
     };
 
     this.toggled = false;
+    this.dropdown = false;
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.dropOptions = this.dropOptions.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
 
@@ -40,7 +43,8 @@ class Note extends React.Component {
       this.props.createNote(Object.assign({}, {title: "", body: "", notebook_id: this.props.currentNotebook.id}));
     } else if (nextProps.currentNote && !this.props.currentNote || this.props.currentNote.id !== nextProps.currentNote.id) {
       this.setState({ title: nextProps.currentNote.title,
-                      body: nextProps.currentNote.body });
+                      body: nextProps.currentNote.body,
+                      notebook: nextProps.currentNote.notebook });
     }
   }
 
@@ -70,7 +74,7 @@ class Note extends React.Component {
 
     const note = {
       id: this.props.currentNote.id,
-      notebook_id: this.props.currentNote.notebook_id,
+      notebook_id: this.state.notebook.id,
       title: this.state.title,
       body: this.state.body
     };
@@ -95,11 +99,25 @@ class Note extends React.Component {
     this.setState({body: value});
   }
 
-  switchNotebook(id) {
-    this.props.fetchNotebook(id);
+  switchNotebook(notebook) {
+    this.setState({notebook: notebook})
+    .then(() => this.dropOptions());
+  }
+
+  dropOptions() {
+    const dropdownMenu = document.getElementById("notebook-dropdown");
+
+    if (this.dropdown) {
+      dropdownMenu.classList.remove("show-dropdown");
+    } else {
+      dropdownMenu.classList.add("show-dropdown");
+    }
+
+    this.dropdown = !this.dropdown;
   }
 
   render() {
+    const currentNote = this.props.currentNote;
     return (
       <div id="notes-main"
            className="css-transitions-only-after-page-load">
@@ -115,6 +133,27 @@ class Note extends React.Component {
              onClick={() => this.toggleResize()} />
         </div>
         <div id="note-toolbox">
+          <div className="notebook-select" onClick={() => this.dropOptions()}>
+            <i className="fa fa-book" /> {this.state.notebook.name} <b>▼</b>
+
+          <div id="notebook-dropdown">
+              {
+                this.props.notebooks.map(notebook => {
+                  let selected;
+                  if (notebook.id === this.state.notebook.id) {
+                    selected = "selected-notebook";
+                  }
+                  return (
+                    <div key={notebook.id}
+                         className={`${selected} notebook-option`}
+                         onClick={() => this.switchNotebook(notebook)}>
+                         {notebook.name}
+                    </div>
+                  );
+                })
+              }
+            </div>
+          </div>
         </div>
         <div id="note-body">
           <form onSubmit={this.handleSubmit}>
