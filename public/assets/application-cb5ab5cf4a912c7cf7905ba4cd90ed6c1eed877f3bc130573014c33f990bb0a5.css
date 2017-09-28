@@ -472,6 +472,25 @@ footer a:hover {
   margin-bottom: 30px;
 }
 
+#notebook-header {
+  padding: 30px 0;
+  background-color: #393d41;
+  color: #F5F5F5;
+  text-align: center;
+}
+
+#notebook-header h2 {
+  font-size: 16px;
+  text-transform: uppercase;
+  font-weight: 100;
+  letter-spacing: 5px;
+}
+
+#notebook-header h4 {
+  font-size: 12px;
+  margin-top: 10px;
+}
+
 .note-summary-item {
   padding: 10px 20px 0px 20px;
   color: #c4c4c4;
@@ -594,6 +613,10 @@ footer a:hover {
     -webkit-box-shadow: none !important;
     box-shadow: none !important;
     outline:none !important;
+}
+
+#note-body .title {
+  width: 100%;
 }
 
 #note-body .title, #note-body input::placeholder {
