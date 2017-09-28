@@ -1,5 +1,4 @@
 import React from 'react';
-import Textarea from 'react-textarea-autosize';
 import ReactQuill from 'react-quill';
 
 const toolBarOpts = [
@@ -26,7 +25,7 @@ class Note extends React.Component {
 
     this.state = {
       title: "",
-      body: ""
+      body: "",
     };
 
     this.toggled = false;
@@ -43,10 +42,6 @@ class Note extends React.Component {
       this.setState({ title: nextProps.currentNote.title,
                       body: nextProps.currentNote.body });
     }
-  }
-
-  switchNotebook(id) {
-    this.props.fetchNotebook(id);
   }
 
   toggleResize() {
@@ -100,15 +95,11 @@ class Note extends React.Component {
     this.setState({body: value});
   }
 
-  render() {
-    // setTimeout(() => {
-    //   const div = document.getElementById("notes-main");
-    //
-    //   if (div) {
-    //     div.classList.remove("css-transitions-only-after-page-load");
-    //   }
-    // }, 20);
+  switchNotebook(id) {
+    this.props.fetchNotebook(id);
+  }
 
+  render() {
     return (
       <div id="notes-main"
            className="css-transitions-only-after-page-load">
