@@ -34,6 +34,7 @@ class NoteSidebar extends React.Component {
                 key={note.id}
                 note={note}
                 deleteNote={this.props.deleteNote}
+                type="notes"
                 currentNote={this.props.currentNote.id == note.id} />
             ))}
           </ul>

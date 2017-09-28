@@ -1,5 +1,5 @@
 import React from 'react';
-import NoteShortSummary from '../notes/note_short_summary';
+import NotebookShortSummary from './notebook_short_summary';
 import Modal from 'react-modal';
 
 const overlayStyles = {
@@ -107,9 +107,11 @@ class NotebooksDetail extends React.Component {
         <ul>
           {this.props.notebooks.map(notebook => (
             <li key={notebook.id}>
-              <NoteShortSummary
+              <NotebookShortSummary
                 notebook={notebook}
                 deleteNotebook={this.props.deleteNotebook}
+                fetchNote={this.props.fetchNote}
+                fetchNotebook={this.props.fetchNotebook}
                 />
             </li>
           ))}

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-class NoteShortSummary extends React.Component {
+class NotebookShortSummary extends React.Component {
   handleDelete(event) {
     event.preventDefault();
     this.props.deleteNotebook(this.props.notebook.id);
@@ -25,4 +25,4 @@ class NoteShortSummary extends React.Component {
   }
 }
 
-export default NoteShortSummary;
+export default NotebookShortSummary;

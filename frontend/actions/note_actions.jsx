@@ -38,3 +38,7 @@ export const createNote = note => dispatch => (
 export const updateNote = note => dispatch => (
   NoteApiUtil.updateNote(note).then(updatedNote => dispatch(receiveNote(updatedNote)))
 );
+
+export const fetchNotesByNotebook = id => dispatch => (
+  NoteApiUtil.fetchNotesByNotebook(id).then(notes => dispatch(receiveNotes(notes)))
+);

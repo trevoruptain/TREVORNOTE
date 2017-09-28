@@ -24,7 +24,8 @@ class NotebookOverlay extends React.Component {
           <NotebooksDetail
             notebooks={this.props.notebooks}
             createNotebook={this.props.createNotebook}
-            deleteNotebook={this.props.deleteNotebook} />
+            deleteNotebook={this.props.deleteNotebook}
+            fetchNotebook={this.props.fetchNotebook} />
       </div>
     );
   }

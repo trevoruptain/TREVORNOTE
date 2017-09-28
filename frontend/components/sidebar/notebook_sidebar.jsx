@@ -1,42 +1,48 @@
 import React from 'react';
 import NoteSummaryItem from './note_summary_item';
 
-class NoteSidebar extends React.Component {
+class NotebookSidebar extends React.Component {
 
   constructor(props) {
     super(props);
 
     this.state = {
-      currentNotebook: this.props.currentNote,
-      notebooks: this.props.notebooks
+      currentNote: this.props.currentNote,
+      currentNotebook: this.props.currentNotebook,
+      notes: this.props.notes
     };
   }
 
   componentWillMount() {
-    this.props.fetchNotes();
+    this.props.fetchNotebook(this.props.match.params.notebookId);
+    this.props.fetchNotesByNotebook(this.props.match.params.notebookId);
   }
 
-  componentWillReceiveProps(newState) {
-    this.setState({ currentNote: newState.currentNote, notes: newState.notes });
+  componentWillReceiveProps(nextProps) {
+    this.setState({currenNote: nextProps.currentNote,
+                   currentNotebook: nextProps.currentNotebook,
+                   notes: nextProps.notes});
   }
 
   render() {
     return (
       <div id="sidebar-container">
-        <div id="note-header">
-          <h2>Notes</h2>
-          <h4>{this.props.notes.length} notes</h4>
+        <div id="notebook-header">
+          <h2>{this.state.currentNotebook.name}</h2>
+          <h4>{this.state.currentNotebook.notes.length} notes</h4>
         </div>
         <div id="note-list">
           <ul>
-            {this.state.notes.map(note => (
-              <NoteSummaryItem
-                key={note.id}
-                note={note}
-                deleteNotebook={this.props.deleteNotebook}
-                createNotebook={this.props.createNotebook}
-                currentNotebook={this.props.currentNote.id == note.id} />
-            ))}
+            {
+              this.state.notes.map(note => (
+                <NoteSummaryItem
+                  key={note.id}
+                  type={`notebooks/${this.state.currentNotebook.id}/notes`}
+                  note={note}
+                  deleteNote={this.props.deleteNote}
+                  currentNote={this.props.currentNote.id == note.id} />
+                ))
+            }
           </ul>
         </div>
       </div>
@@ -44,4 +50,4 @@ class NoteSidebar extends React.Component {
   }
 }
 
-export default NoteSidebar;
+export default NotebookSidebar;

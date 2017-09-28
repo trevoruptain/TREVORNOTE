@@ -2,17 +2,23 @@ import { connect } from 'react-redux';
 import { withRouter } from "react-router";
 
 import NotebookSidebar from './notebook_sidebar';
-import { fetchNotebooks, deleteNotebook, createNotebook } from '../../actions/note_actions';
+import { fetchNote,
+         deleteNote,
+         fetchNotesByNotebook } from '../../actions/note_actions';
+
+import { fetchNotebook } from '../../actions/notebook_actions';
 
 const mapStateToProps = (state) => ({
-  notes: Object.values(state.entities.notebooks.all).reverse(),
-  currentNotebook: state.entities.notes.currentNotebook
+  currentNote: state.entities.notes.currentNote,
+  currentNotebook: state.entities.notebooks.currentNotebook,
+  notes: Object.values(state.entities.notes.all).reverse()
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchNotebooks: () => dispatch(fetchNotebooks()),
-  deleteNotebook: id => dispatch(deleteNotebook(id)),
-  createNotebook: note => dispatch(createNotebook(note))
+  fetchNotebook: id => dispatch(fetchNotebook(id)),
+  fetchNote: id => dispatch(fetchNote(id)),
+  fetchNotesByNotebook: id => dispatch(fetchNotesByNotebook(id)),
+  deleteNote: id => dispatch(deleteNote(id))
 });
 
 export default withRouter(connect(
