@@ -45,7 +45,7 @@ export const updateTag = tag => (
 export const addTagToNote = (noteId, tagName) => {
   return $.ajax({
     method: "POST",
-    url: `api/taggings/`,
+    url: `/api/taggings`,
     data: { tagging: { note_id: noteId, tag_name: tagName } }
   });
 };
@@ -53,7 +53,7 @@ export const addTagToNote = (noteId, tagName) => {
 export const removeTagFromNote = (noteId, tagName) => {
   return $.ajax({
     method: "DELETE",
-    url: `api/taggings`,
+    url: `/api/taggings`,
     data: { tagging: { note_id: noteId, tag_name: tagName } }
   });
 };

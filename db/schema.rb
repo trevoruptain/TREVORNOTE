@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 20170929023723) do
     t.string "tag_name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["note_id", "tag_name"], name: "index_taggings_on_note_id_and_tag_name", unique: true
     t.index ["note_id"], name: "index_taggings_on_note_id"
     t.index ["tag_name"], name: "index_taggings_on_tag_name"
   end

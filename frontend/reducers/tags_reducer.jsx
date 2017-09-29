@@ -9,6 +9,7 @@ import {
 const TagsReducer = (state = { all: {}, currentTag: null }, action) => {
   Object.freeze(state);
   let newState = Object.assign({}, state);
+
   switch(action.type) {
     case RECEIVE_TAGS:
       newState.all = action.tags;
@@ -29,15 +30,15 @@ const TagsReducer = (state = { all: {}, currentTag: null }, action) => {
       newState.currentTag = Object.values(state.all)[0];
       return newState;
     case RECEIVE_TAGGING:
-      const tag = action.tagging.tag;
+      const tag = action.tagging.tag_name;
       if (!newState.all[tag.id]) {
-        newState[tag.id] = tag;
+        newState.all[tag.id] = tag;
       }
       return newState;
     case REMOVE_TAGGING:
-      const removeTag = action.tagging.tag;
+      const removeTag = action.tagging.tag_name;
       if (newState.all[removeTag.id]) {
-        delete newState[removeTag.id];
+        delete newState.all[removeTag.id];
       }
       return newState;
     default:

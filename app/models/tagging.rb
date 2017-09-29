@@ -11,7 +11,7 @@
 
 class Tagging < ApplicationRecord
   validates :note_id, :tag_name, presence: true
-  validates :note_id, uniqueness: { scope: :tag_name, message: "already has this tag" }
+  validates_uniqueness_of :note_id, scope: [:tag_name]
 
   belongs_to :note
 

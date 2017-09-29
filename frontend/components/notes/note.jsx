@@ -27,7 +27,8 @@ class Note extends React.Component {
       title: "",
       body: "",
       notebook: {},
-      tags: []
+      tags: [],
+      newTagName: ""
     };
 
     this.toggled = false;
@@ -36,6 +37,8 @@ class Note extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.dropOptions = this.dropOptions.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.handleTagNameChange = this.handleTagNameChange.bind(this);
+    this.addTagging = this.addTagging.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -118,6 +121,21 @@ class Note extends React.Component {
     this.dropdown = !this.dropdown;
   }
 
+  removeTagging(name) {
+    this.props.removeTagFromNote(this.props.currentNote.id, name);
+  }
+
+  addTagging(event) {
+    if (event.key === "Enter") {
+      this.props.addTagToNote(this.props.currentNote.id, this.state.newTagName);
+      this.setState({ newTagName: "" });
+    }
+  }
+
+  handleTagNameChange(e) {
+    this.setState({newTagName: e.target.value});
+  }
+
   render() {
     const currentNote = this.props.currentNote;
 
@@ -162,10 +180,15 @@ class Note extends React.Component {
             <ul>
               {
                 this.state.tags.map(name => (
-                  <li><i className="fa fa-times" /> {name}</li>
+                  <li><i className="fa fa-times" onClick={() => this.removeTagging(name)} /> {name}</li>
                 ))
               }
             </ul>
+            <input
+              onChange={this.handleTagNameChange}
+              onKeyPress={this.addTagging}
+              value={this.state.newTagName}
+              placeholder="+" />
           </div>
         </div>
 

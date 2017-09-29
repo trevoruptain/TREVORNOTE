@@ -57,7 +57,7 @@ end
 
 #Taggings
 
-10.times do |i|
+20.times do |i|
   note_id = (i + 1) % 10
 
   Tagging.create(tag_name: Faker::StarWars.specie,
