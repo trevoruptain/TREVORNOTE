@@ -378,21 +378,7 @@ footer a:hover {
   z-index: 100;
 }
 
-#navbar img {
-  width: 30px;
-  height:auto;
-  margin-bottom: 50px;
-}
-
-#main-nav {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height:300px;
-  align-items: center;
-}
-
-#main-nav a {
+#navbar a {
   width: 20px;
   height: 20px;
   border-radius: 100%;
@@ -407,10 +393,29 @@ footer a:hover {
   transition: background-color 0.5s;
 }
 
-#main-nav a:hover {
+#navbar a:hover {
   color: #FFF;
   background-color: #2DBE60;
   transition: background-color 0.5s;
+}
+
+#navbar img {
+  width: 30px;
+  height:auto;
+  margin-bottom: 50px;
+}
+
+#main-nav {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height:130px;
+  padding-bottom: 150px;
+  align-items: center;
+}
+
+#main-nav a {
+  border:none;
 }
 
 #profile-holder {
@@ -592,6 +597,9 @@ footer a:hover {
 #note-toolbox {
   margin-left: 100px;
   font-size: 12px;
+  height: 30px;
+  display:flex;
+  align-items: center;
 }
 
 #note-toolbox i {
@@ -600,16 +608,21 @@ footer a:hover {
 
 .notebook-select {
   cursor:pointer;
+  float: left;
 }
 
 .notebook-select b {
   font-size: 8px;
 }
 
+.hide-notebook-choice {
+  display: none !important;
+}
+
 #notebook-dropdown {
   position: absolute;
-  top: 65px;
-  left: 450px;
+  top: 55px;
+  left: 445px;
   z-index: 10;
   border: solid 1px #cecece;
   width: 200px;
@@ -633,6 +646,37 @@ footer a:hover {
 
 .selected-notebook {
   color: #2DBE60;
+}
+
+#note-tags {
+  padding-left:50px;
+  display: flex;
+  align-items: center;
+}
+
+#note-tags i {
+  cursor: pointer;
+}
+
+#note-tags ul {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+
+#note-tags li {
+  list-style: none;
+  display: inline;
+  padding: 5px;
+  background-color: #f8f8f8;
+  border: solid 1px #ececec;
+  border-radius: 3px;
+  margin: 5px;
+  font-size: 10px;
+}
+
+#note-tags input {
+  border: none;
 }
 
 #note-actions {
@@ -662,18 +706,14 @@ footer a:hover {
     outline:none !important;
 }
 
-#note-body .title {
-  min-width: 300px;
-}
-
-#note-body .title, #note-body input::placeholder {
+#notes-main .title, #notes-main input::placeholder {
   font-size: 20px;
   font-weight: 100;
   color: #2dbe60;
   margin-bottom: 30px;
 }
 
-#note-body textarea, #note-body textarea:focus, #note-body textarea::placeholder {
+#notes-main textarea, #notes-main textarea:focus, #notes-main textarea::placeholder {
   font-size: 12px;
   color: grey;
   width: 85%;
@@ -685,15 +725,17 @@ footer a:hover {
   -webkit-box-shadow: none;
 }
 
-#note-body input, #note-body input:focus {
+#notes-main input, #notes-main input:focus {
   border: none;
   outline: none !important;
 }
 
-#note-body .title {
+#notes-main .title {
   position: absolute;
-  top: 110px;
+  top: 120px;
+  padding-left:100px;
   z-index: 9;
+  min-width: 300px;
 }
 
 .navbar-move-over {
@@ -731,6 +773,7 @@ footer a:hover {
   text-transform: uppercase;
   cursor: pointer;
   transition: all 1s;
+  z-index: 5;
 }
 
 #save-button:hover {
@@ -794,6 +837,75 @@ footer a:hover {
 .notebook-detail-header i {
   color: #2DBE60;
   cursor: pointer;
+}
+
+#tag-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(255, 255, 255, 0.5);
+  z-index: 10;
+}
+
+#tags-detail {
+  position: absolute;
+  top: 0;
+  left: -300px;
+  height: 100vh;
+  width: 350px;
+  background-color: #FFF;
+  border-right: solid 1px #dedede;
+  overflow-y: scroll;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  z-index: 98;
+}
+
+#tags-detail h2 {
+  font-size: 16px;
+  text-transform: uppercase;
+  color: grey;
+  font-weight: 100;
+  letter-spacing: 5px;
+}
+
+#tags-detail a {
+  text-decoration: none;
+}
+
+.tag-detail-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  border-bottom: solid 1px #dedede;
+}
+
+.tag-detail-header i {
+  color: #2DBE60;
+  cursor: pointer;
+}
+
+.tag-holder {
+  padding: 30px;
+}
+
+#tag {
+  float:left;
+  padding: 3px;
+  color: #4a4a4a;
+  background-color: #f8f8f8;
+  border: solid #d1d1d1 1px;
+  border-radius: 3px;
+  margin: 5px;
+  font-size: 12px;
+}
+
+#tag i {
+  margin-left: 5px;
 }
 
 #note-short-summary {
@@ -867,9 +979,9 @@ footer a:hover {
 .ReactModalPortal input {
   margin: 30px 0 50px 0;
   border: none;
-  width: 310px;
   font-size: 40px;
   font-weight: 200;
+  text-align:center;
 }
 
 .ReactModalPortal button {
