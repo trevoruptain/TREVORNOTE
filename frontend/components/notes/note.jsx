@@ -45,7 +45,8 @@ class Note extends React.Component {
     } else if (nextProps.currentNote && !this.props.currentNote || this.props.currentNote.id !== nextProps.currentNote.id) {
       this.setState({ title: nextProps.currentNote.title,
                       body: nextProps.currentNote.body,
-                      notebook: nextProps.currentNote.notebook });
+                      notebook: nextProps.currentNote.notebook,
+                      tags: nextProps.currentNote.tags });
     }
   }
 
@@ -138,25 +139,36 @@ class Note extends React.Component {
           <div className="notebook-select" onClick={() => this.dropOptions()}>
             <i className="fa fa-book" /> {this.state.notebook.name} <b>▼</b>
 
-          <div id="notebook-dropdown">
-              {
-                this.props.notebooks.map(notebook => {
-                  let selected;
-                  if (notebook.id === this.state.notebook.id) {
-                    selected = "selected-notebook";
-                  }
-                  return (
-                    <div key={notebook.id}
-                         className={`${selected} notebook-option`}
-                         onClick={() => this.switchNotebook(notebook)}>
-                         {notebook.name}
-                    </div>
-                  );
-                })
-              }
+            <div id="notebook-dropdown">
+                {
+                  this.props.notebooks.map(notebook => {
+                    let selected;
+                    if (notebook.id === this.state.notebook.id) {
+                      selected = "selected-notebook";
+                    }
+                    return (
+                      <div key={notebook.id}
+                           className={`${selected} notebook-option`}
+                           onClick={() => this.switchNotebook(notebook)}>
+                           {notebook.name}
+                      </div>
+                    );
+                  })
+                }
             </div>
           </div>
+
+          <div id="note-tags">
+            <ul>
+              {
+                this.state.tags.map(name => (
+                  <li><i className="fa fa-times" /> {name}</li>
+                ))
+              }
+            </ul>
+          </div>
         </div>
+
         <div id="note-body">
           <form onSubmit={this.handleSubmit}>
             <input type="text"

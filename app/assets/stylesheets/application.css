@@ -555,6 +555,7 @@ footer a:hover {
 
 .notebook-select {
   cursor:pointer;
+  float: left;
 }
 
 .notebook-select b {
@@ -567,8 +568,8 @@ footer a:hover {
 
 #notebook-dropdown {
   position: absolute;
-  top: 65px;
-  left: 450px;
+  top: 55px;
+  left: 445px;
   z-index: 10;
   border: solid 1px #cecece;
   width: 200px;
@@ -592,6 +593,34 @@ footer a:hover {
 
 .selected-notebook {
   color: #2DBE60;
+}
+
+#note-tags {
+  padding-left:50px;
+  display: flex;
+  height:10px;
+  align-items: center;
+}
+
+#note-tags i {
+  cursor: pointer;
+}
+
+#note-tags ul {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+
+#note-tags li {
+  list-style: none;
+  display: inline;
+  padding: 5px;
+  background-color: #cecece;
+  border: solid 1px #2DBE60;
+  border-radius: 3px;
+  margin: 5px;
+  font-size: 10px;
 }
 
 #note-actions {
@@ -621,10 +650,6 @@ footer a:hover {
     outline:none !important;
 }
 
-#note-body .title {
-  min-width: 300px;
-}
-
 #note-body .title, #note-body input::placeholder {
   font-size: 20px;
   font-weight: 100;
@@ -652,7 +677,9 @@ footer a:hover {
 #note-body .title {
   position: absolute;
   top: 110px;
+  left: 450px;
   z-index: 9;
+  min-width: 300px;
 }
 
 .navbar-move-over {
@@ -690,6 +717,7 @@ footer a:hover {
   text-transform: uppercase;
   cursor: pointer;
   transition: all 1s;
+  z-index: 5;
 }
 
 #save-button:hover {

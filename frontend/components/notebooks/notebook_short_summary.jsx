@@ -16,6 +16,7 @@ class NotebookShortSummary extends React.Component {
             <p>{this.props.notebook.notes.length}</p>
           </div>
           <div className="icon-holder">
+            <i className="fa fa-star" />
             <i className="fa fa-trash" onClick={e => this.handleDelete(e)} />
           </div>
         </div>

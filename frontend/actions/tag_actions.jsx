@@ -69,7 +69,6 @@ export const addTagToNote = (noteId, tagName) => dispatch => {
 
 export const removeTagFromNote = (noteId, tagName) => dispatch => {
   return TagApiUtil.removeTagFromNote(noteId, tagName).then(tagging =>
-    dispatch(removeTagging(tagging)
-    )
+    dispatch(removeTagging(tagging))
   );
 };
