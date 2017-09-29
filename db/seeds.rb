@@ -48,7 +48,7 @@ end
 #Tags
 
 100.times do |i|
-  user_id = (i % 4) + 1
+  user_id = (i + 1) % 10
   tag_name = Faker::StarWars.specie
 
   Tag.create(user_id: user_id,
@@ -58,7 +58,6 @@ end
 #Taggings
 
 40.times do |i|
-  tag_id = (i + 1) % 10
   note_id = (i + 1) % 10
 
   Tagging.create(tag_name: Faker::StarWars.specie,

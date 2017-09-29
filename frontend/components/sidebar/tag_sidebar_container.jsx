@@ -9,7 +9,8 @@ import { fetchNote,
 import { fetchTag } from '../../actions/tag_actions';
 
 const mapStateToProps = (state) => ({
-  tags: state.entities.tags,
+  currentNote: state.entities.notes.currentNote,
+  currentTag: state.entities.tags.currentTag,
   notes: Object.values(state.entities.notes.all).reverse()
 });
 

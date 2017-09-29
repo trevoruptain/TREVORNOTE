@@ -8,7 +8,8 @@ import Note from './note';
 const mapStateToProps = state => ({
   currentNote: state.entities.notes.currentNote,
   currentNotebook: state.entities.notebooks.currentNotebook,
-  notebooks: Object.values(state.entities.notebooks.all)
+  notebooks: Object.values(state.entities.notebooks.all),
+  tags: Object.values(state.entities.tags.all)
 });
 
 const mapDispatchToProps = dispatch => ({

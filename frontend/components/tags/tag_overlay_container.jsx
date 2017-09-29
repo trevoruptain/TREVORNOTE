@@ -8,7 +8,7 @@ import { withRouter } from 'react-router';
 import TagOverlay from './tag_overlay';
 
 const mapStateToProps = state => ({
-  tags: Object.values(state.entities.tags)
+  tags: Object.values(state.entities.tags.all)
 });
 
 const mapDispatchToProps = dispatch => ({

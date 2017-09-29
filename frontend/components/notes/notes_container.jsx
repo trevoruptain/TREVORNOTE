@@ -5,7 +5,8 @@ import { fetchNote,
          deleteNote,
          createNote,
          updateNote,
-         fetchNotesByNotebook } from '../../actions/note_actions';
+         fetchNotesByNotebook,
+         fetchNotesByTag } from '../../actions/note_actions';
 
 import { fetchNotebook, fetchNotebooks } from '../../actions/notebook_actions';
 import { fetchTag, fetchTags } from '../../actions/tag_actions';
@@ -26,6 +27,7 @@ const mapDispatchToProps = dispatch => ({
   fetchNotebook: id => dispatch(fetchNotebook(id)),
   fetchNotebooks: () => dispatch(fetchNotebooks()),
   fetchNotesByNotebook: id => dispatch(fetchNotesByNotebook(id)),
+  fetchNotesByTag: id => dispatch(fetchNotesByTag(id)),
   fetchTag: id => dispatch(fetchTag(id)),
   fetchTags: () => dispatch(fetchTags())
 });

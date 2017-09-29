@@ -26,7 +26,8 @@ class Note extends React.Component {
     this.state = {
       title: "",
       body: "",
-      notebook: {}
+      notebook: {},
+      tags: []
     };
 
     this.toggled = false;

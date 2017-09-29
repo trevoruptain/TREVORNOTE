@@ -7,18 +7,20 @@ class TagSidebar extends React.Component {
     super(props);
 
     this.state = {
-      tags: this.props.tags
+      currentNote: this.props.currentNote,
+      currentTag: this.props.currentTag,
+      notes: this.props.notes
     };
   }
 
   componentWillMount() {
-    this.props.fetchNotebook(this.props.match.params.notebookId);
-    this.props.fetchNotesByNotebook(this.props.match.params.notebookId);
+    this.props.fetchTag(this.props.match.params.tagId);
+    this.props.fetchNotesByTag(this.props.match.params.tagId);
   }
 
   componentWillReceiveProps(nextProps) {
     this.setState({currenNote: nextProps.currentNote,
-                   currentNotebook: nextProps.currentNotebook,
+                   currentTag: nextProps.currentTag,
                    notes: nextProps.notes});
   }
 
@@ -26,8 +28,8 @@ class TagSidebar extends React.Component {
     return (
       <div id="sidebar-container">
         <div id="notebook-header">
-          <h2>{this.state.currentNotebook.name}</h2>
-          <h4>{this.state.currentNotebook.notes.length} notes</h4>
+          <h2>{this.state.currentTag.name}</h2>
+          <h4>{this.state.currentTag.notes.length} notes</h4>
         </div>
         <div id="note-list">
           <ul>
@@ -35,7 +37,7 @@ class TagSidebar extends React.Component {
               this.state.notes.map(note => (
                 <NoteSummaryItem
                   key={note.id}
-                  type={`notebooks/${this.state.currentNotebook.id}/notes`}
+                  type={`tags/${this.state.currentTag.id}/notes`}
                   note={note}
                   deleteNote={this.props.deleteNote}
                   currentNote={this.props.currentNote.id == note.id} />
