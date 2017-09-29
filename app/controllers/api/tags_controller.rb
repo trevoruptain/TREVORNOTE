@@ -2,7 +2,7 @@ class Api::TagsController < ApplicationController
   before_action :require_logged_in
 
   def index
-    @tags = current_user.tags
+    @tags = current_user.tags.sort_by { |tag| tag.name }
     render :index
   end
 

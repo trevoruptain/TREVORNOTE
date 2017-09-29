@@ -1,2 +1,4 @@
-json.extract! tag, :id, :user_id, :name
-json.noteIds tag.notes.ids
+json.extract! tag, :id, :name
+json.notes do
+  json.array! tag.notes.ids
+end

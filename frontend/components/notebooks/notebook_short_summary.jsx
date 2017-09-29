@@ -17,7 +17,6 @@ class NotebookShortSummary extends React.Component {
           </div>
           <div className="icon-holder">
             <i className="fa fa-trash" onClick={e => this.handleDelete(e)} />
-            <i className="fa fa-star" />
           </div>
         </div>
       </Link>

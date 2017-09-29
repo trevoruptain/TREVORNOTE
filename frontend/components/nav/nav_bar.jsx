@@ -10,10 +10,12 @@ class NavBar extends React.Component {
   render() {
     return (
       <div id="navbar">
-        <div id="main-nav">
+        <div>
           <img src="https://s26.postimg.org/uumqyfbj9/trevornote-icon.png" />
           <NavButton type="add-note"/>
-          <NavButton type="shortcuts"/>
+        </div>
+
+        <div id="main-nav">
           <NavButton type="notes"/>
           <NavButton type="notebooks"/>
           <NavButton type="tags"/>

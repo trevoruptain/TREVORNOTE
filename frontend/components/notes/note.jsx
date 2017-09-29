@@ -118,6 +118,7 @@ class Note extends React.Component {
 
   render() {
     const currentNote = this.props.currentNote;
+
     return (
       <div id="notes-main"
            className="css-transitions-only-after-page-load">

@@ -4,6 +4,7 @@ import NoteSidebarContainer from '../sidebar/note_sidebar_container';
 import NoteContainer from './note_container';
 import NotebookOverlayContainer from '../notebooks/notebook_overlay_container';
 import NotebookSidebarContainer from '../sidebar/notebook_sidebar_container';
+import TagOverlayContainer from '../tags/tag_overlay_container';
 
 class Notes extends React.Component {
   constructor(props) {
@@ -14,6 +15,7 @@ class Notes extends React.Component {
   componentWillMount() {
     this.props.fetchNotes();
     this.props.fetchNotebooks();
+    this.props.fetchTags();
   }
 
   componentWillReceiveProps(nextProps) {
@@ -21,6 +23,7 @@ class Notes extends React.Component {
       this.notebookOverlay = false;
       this.notebookSidebar = false;
       this.noteSidebar = true;
+      this.tagOverlay = false;
     } else if (nextProps.match.path === "/notes/:noteId") {
       if (this.props.match.params.noteId !== nextProps.match.params.noteId) {
         this.props.fetchNote(nextProps.match.params.noteId);
@@ -28,6 +31,7 @@ class Notes extends React.Component {
       this.noteSidebar = true;
       this.notebookOverlay = false;
       this.notebookSidebar = false;
+      this.tagOverlay = false;
     } else if (nextProps.match.path === "/notebooks") {
       this.notebookOverlay = true;
     } else if (nextProps.match.path === "/notebooks/:notebookId") {
@@ -38,6 +42,7 @@ class Notes extends React.Component {
       this.notebookSidebar = true;
       this.notebookOverlay = false;
       this.noteSidebar = false;
+      this.tagOverlay = false;
     } else if (nextProps.match.path === "/notebooks/:notebookId/notes/:noteId") {
       if (this.props.match.params.noteId !== nextProps.match.params.noteId) {
         this.props.fetchNote(nextProps.match.params.noteId);
@@ -45,12 +50,16 @@ class Notes extends React.Component {
       this.notebookSidebar = true;
       this.notebookOverlay = false;
       this.noteSidebar = false;
+      this.tagOverlay = false;
+    } else if (nextProps.match.path === "/tags") {
+      this.tagOverlay = true;
     }
   }
 
   render() {
 
     let notebookOverlay;
+    let tagOverlay;
     let noteSidebar;
     let notebookSidebar;
 
@@ -58,6 +67,12 @@ class Notes extends React.Component {
       notebookOverlay = <NotebookOverlayContainer />;
     } else {
       notebookOverlay = null;
+    }
+
+    if (this.tagOverlay) {
+      tagOverlay = <TagOverlayContainer />;
+    } else {
+      tagOverlay = null;
     }
 
     if (this.noteSidebar) {
@@ -82,6 +97,7 @@ class Notes extends React.Component {
         <NoteContainer />
 
         { notebookOverlay }
+        { tagOverlay }
       </div>
     );
   }

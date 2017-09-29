@@ -19,6 +19,13 @@ export const fetchNotesByNotebook = id => (
   })
 );
 
+export const fetchNotesByTag = id => (
+  $.ajax({
+    method: 'GET',
+    url: `/api/tags/${id}/notes`
+  })
+);
+
 export const removeNote = id => (
   $.ajax({
     method: 'DELETE',

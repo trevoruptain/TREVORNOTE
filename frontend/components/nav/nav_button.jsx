@@ -3,8 +3,7 @@ import { Link } from 'react-router-dom';
 
 const faName = {
   "add-note": "plus",
-  "shortcuts": "star",
-  "notes": "address-book",
+  "notes": "sticky-note",
   "notebooks": "book",
   "tags": "tag"
 };

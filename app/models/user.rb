@@ -24,6 +24,8 @@ class User < ApplicationRecord
   has_many :notes,
     through: :notebooks,
     source: :notes
+  has_many :tags
+  has_many :taggings, through: :tags
 
   def self.find_by_credentials(email, password)
     user = User.find_by(email: email)

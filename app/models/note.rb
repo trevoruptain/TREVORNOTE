@@ -13,6 +13,8 @@
 class Note < ApplicationRecord
   include ActionView::Helpers::DateHelper
   belongs_to :notebook
+  has_many :taggings, dependent: :destroy
+  has_many :tags, through: :taggings
 
   def last_updated_in_words
     time_ago_in_words(self.updated_at) + " ago"

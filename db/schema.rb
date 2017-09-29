@@ -10,37 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170919204052) do
+ActiveRecord::Schema.define(version: 20170929023723) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "note_shortcuts", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "note_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["note_id"], name: "index_note_shortcuts_on_note_id"
-    t.index ["user_id"], name: "index_note_shortcuts_on_user_id"
-  end
-
-  create_table "note_tags", force: :cascade do |t|
-    t.integer "note_id", null: false
-    t.integer "tag_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["note_id"], name: "index_note_tags_on_note_id"
-    t.index ["tag_id"], name: "index_note_tags_on_tag_id"
-  end
-
-  create_table "notebook_shortcuts", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "notebook_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["notebook_id"], name: "index_notebook_shortcuts_on_notebook_id"
-    t.index ["user_id"], name: "index_notebook_shortcuts_on_user_id"
-  end
 
   create_table "notebooks", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -58,6 +31,15 @@ ActiveRecord::Schema.define(version: 20170919204052) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["notebook_id"], name: "index_notes_on_notebook_id"
+  end
+
+  create_table "taggings", force: :cascade do |t|
+    t.integer "note_id", null: false
+    t.string "tag_name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["note_id"], name: "index_taggings_on_note_id"
+    t.index ["tag_name"], name: "index_taggings_on_tag_name"
   end
 
   create_table "tags", force: :cascade do |t|

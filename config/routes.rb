@@ -9,6 +9,9 @@ Rails.application.routes.draw do
     resources :notebooks, only: [:index, :show, :create, :destroy, :update] do
       resources :notes, only: [:index]
     end
+    resources :tags, only: [:index, :show, :create, :destroy, :update] do
+      resources :notes, only: [:index]
+    end
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

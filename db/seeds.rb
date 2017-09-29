@@ -55,22 +55,12 @@ end
              name: tag_name)
 end
 
-#Note Shortcut
+#Taggings
 
-20.times do |i|
-  user_id = (i % 4) + 1
-  note_id = i + 1
+40.times do |i|
+  tag_id = (i + 1) % 10
+  note_id = (i + 1) % 10
 
-  NoteShortcut.create(user_id: user_id,
-                      note_id: note_id)
-end
-
-#Notebook Shortcut
-
-8.times do |i|
-  user_id = (i % 4) + 1
-  notebook_id = i + 1
-
-  NotebookShortcut.create(user_id: user_id,
-                      notebook_id: notebook_id)
+  Tagging.create(tag_name: Faker::StarWars.specie,
+                 note_id: note_id)
 end

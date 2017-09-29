@@ -1,5 +1,3 @@
-@tags.each do |tag|
-  json.set! tag.id do
-    json.partial! 'tag', tag: tag
-  end
+json.array! @tags do |tag|
+  json.partial! 'api/tags/tag', tag: tag
 end
