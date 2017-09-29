@@ -547,6 +547,9 @@ footer a:hover {
 #note-toolbox {
   margin-left: 100px;
   font-size: 12px;
+  height: 30px;
+  display:flex;
+  align-items: center;
 }
 
 #note-toolbox i {
@@ -598,7 +601,6 @@ footer a:hover {
 #note-tags {
   padding-left:50px;
   display: flex;
-  height:10px;
   align-items: center;
 }
 
@@ -616,11 +618,15 @@ footer a:hover {
   list-style: none;
   display: inline;
   padding: 5px;
-  background-color: #cecece;
-  border: solid 1px #2DBE60;
+  background-color: #f8f8f8;
+  border: solid 1px #ececec;
   border-radius: 3px;
   margin: 5px;
   font-size: 10px;
+}
+
+#note-tags input {
+  border: none;
 }
 
 #note-actions {
@@ -650,14 +656,14 @@ footer a:hover {
     outline:none !important;
 }
 
-#note-body .title, #note-body input::placeholder {
+#notes-main .title, #notes-main input::placeholder {
   font-size: 20px;
   font-weight: 100;
   color: #2dbe60;
   margin-bottom: 30px;
 }
 
-#note-body textarea, #note-body textarea:focus, #note-body textarea::placeholder {
+#notes-main textarea, #notes-main textarea:focus, #notes-main textarea::placeholder {
   font-size: 12px;
   color: grey;
   width: 85%;
@@ -669,15 +675,15 @@ footer a:hover {
   -webkit-box-shadow: none;
 }
 
-#note-body input, #note-body input:focus {
+#notes-main input, #notes-main input:focus {
   border: none;
   outline: none !important;
 }
 
-#note-body .title {
+#notes-main .title {
   position: absolute;
-  top: 110px;
-  left: 450px;
+  top: 120px;
+  padding-left:100px;
   z-index: 9;
   min-width: 300px;
 }

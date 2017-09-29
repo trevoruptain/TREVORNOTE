@@ -33,6 +33,8 @@ class Notes extends React.Component {
         this.props.fetchNote(nextProps.match.params.noteId);
       }
       this.noteSidebar = true;
+    } else if (nextProps.match.path === "/add-note") {
+      this.noteSidebar = true;
     } else if (nextProps.match.path === "/notebooks") {
       this.notebookOverlay = true;
     } else if (nextProps.match.path === "/notebooks/:notebookId") {

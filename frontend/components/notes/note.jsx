@@ -42,14 +42,19 @@ class Note extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    const title = nextProps.currentNote ? nextProps.currentNote.title : "";
+    const body = nextProps.currentNote ? nextProps.currentNote.body : "";
+    const notebook = nextProps.currentNote ? nextProps.currentNote.notebook : {};
+    const tags = nextProps.currentNote ? nextProps.currentNote.tags : [];
+
     if (nextProps.match.path === "/add-note" && this.props.match.path !== "/add-note") {
       this.toggleResize();
       this.props.createNote(Object.assign({}, {title: "", body: "", notebook_id: this.props.currentNotebook.id}));
-    } else if (nextProps.currentNote && !this.props.currentNote || this.props.currentNote.id !== nextProps.currentNote.id) {
-      this.setState({ title: nextProps.currentNote.title,
-                      body: nextProps.currentNote.body,
-                      notebook: nextProps.currentNote.notebook,
-                      tags: nextProps.currentNote.tags });
+    } else if (!nextProps.currentNote || !this.props.currentNote || this.props.currentNote.id !== nextProps.currentNote.id) {
+      this.setState({ title: title,
+                      body: body,
+                      notebook: notebook,
+                      tags: tags });
     }
   }
 
@@ -142,6 +147,18 @@ class Note extends React.Component {
     return (
       <div id="notes-main"
            className="css-transitions-only-after-page-load">
+       <form onSubmit={this.handleSubmit} class="title-form">
+         <input type="text"
+                className="title"
+                value={this.state.title}
+                onChange={this.update("title")}
+                placeholder="Title your note"
+                autoFocus />
+         <br />
+         <input type="submit"
+                id="save-button"
+                value="Save"/>
+       </form>
         <div id="notes-header">
           <div id="note-actions">
             <i className="fa fa-star" />
@@ -193,24 +210,11 @@ class Note extends React.Component {
         </div>
 
         <div id="note-body">
-          <form onSubmit={this.handleSubmit}>
-            <input type="text"
-                   className="title"
-                   value={this.state.title}
-                   onChange={this.update("title")}
-                   placeholder="Title your note"
-                   autoFocus />
-            <br />
-            <ReactQuill className="note-body"
-                      value={this.state.body}
-                      onChange={this.handleChange}
-                      modules={modules}
-                      placeholder="Drag files here or just start typing..." />
-            <br />
-            <input type="submit"
-                   id="save-button"
-                   value="Save"/>
-          </form>
+          <ReactQuill className="note-body"
+                    value={this.state.body}
+                    onChange={this.handleChange}
+                    modules={modules}
+                    placeholder="Drag files here or just start typing..." />
         </div>
       </div>
     );
