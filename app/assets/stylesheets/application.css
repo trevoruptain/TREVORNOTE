@@ -982,7 +982,10 @@ footer a:hover {
 }
 
 .ql-editor {
-  padding: 60px 0 !important;
+  overflow-y: scroll !important;
+  margin-top: 5vh !important;
+  height: 80vh !important;
+  padding: 0 0 !important;
 }
 
 .ql-toolbar.ql-snow {
