@@ -147,17 +147,13 @@ class Note extends React.Component {
     return (
       <div id="notes-main"
            className="css-transitions-only-after-page-load">
-       <form onSubmit={this.handleSubmit} class="title-form">
+       <form onSubmit={this.handleSubmit} className="title-form">
          <input type="text"
                 className="title"
                 value={this.state.title}
                 onChange={this.update("title")}
                 placeholder="Title your note"
                 autoFocus />
-         <br />
-         <input type="submit"
-                id="save-button"
-                value="Save"/>
        </form>
         <div id="notes-header">
           <div id="note-actions">
