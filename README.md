@@ -10,54 +10,7 @@ The Trevornote backend was written in Ruby riding on Rails. The database impleme
 
 ## Features
 
-The primary features of Trevornote are notes, notebooks, and tags. All of these are broken down into sensible and intuitive React components. With notes being the primary feature of the app, the notes container served as a logic center for determining which overlays and sidebars to display. This is demonstrated in componentWillReceiveProps:
-
-```javascript
-componentWillReceiveProps(nextProps) {
-  this.notebookOverlay = false;
-  this.notebookSidebar = false;
-  this.noteSidebar = false;
-  this.tagOverlay = false;
-  this.tagSidebar = false;
-
-  if (nextProps.match.path === "/notes") {
-    this.noteSidebar = true;
-  } else if (nextProps.match.path === "/notes/:noteId") {
-    if (this.props.match.params.noteId !== nextProps.match.params.noteId) {
-      this.props.fetchNote(nextProps.match.params.noteId);
-    }
-    this.noteSidebar = true;
-  } else if (nextProps.match.path === "/notebooks") {
-    this.notebookOverlay = true;
-  } else if (nextProps.match.path === "/notebooks/:notebookId") {
-    if (this.props.match.params.notebookId !== nextProps.match.params.notebookId) {
-      this.props.fetchNotebook(nextProps.match.params.notebookId);
-      this.props.fetchNotesByNotebook(nextProps.match.params.notebookId);
-    }
-    this.notebookSidebar = true;
-  } else if (nextProps.match.path === "/notebooks/:notebookId/notes/:noteId") {
-    if (this.props.match.params.noteId !== nextProps.match.params.noteId) {
-      this.props.fetchNote(nextProps.match.params.noteId);
-    }
-    this.notebookSidebar = true;
-  } else if (nextProps.match.path === "/tags") {
-    this.tagOverlay = true;
-  } else if (nextProps.match.path === "/tags/:tagId") {
-    if (this.props.match.params.tagId !== nextProps.match.params.tagId) {
-      this.props.fetchTag(nextProps.match.params.tagId);
-      this.props.fetchNotesByTag(nextProps.match.params.tagId);
-    }
-    this.tagSidebar = true;
-  } else if (nextProps.match.path === "/tags/:tagId/notes/:noteId") {
-    if (this.props.match.params.noteId !== nextProps.match.params.noteId) {
-      this.props.fetchNote(nextProps.match.params.noteId);
-    }
-    this.tagSidebar = true;
-  }
-}
-```
-
-The result was a simple user interface where users were presented with their notes, and could simply click on the title or note body to begin editing.
+The primary features of Trevornote are notes, notebooks, and tags. All of these are broken down into sensible and intuitive React components. With notes being the primary feature of the app, the notes container served as a logic center for determining which overlays and sidebars to display. The result was a simple user interface where users were presented with their notes, and could simply click on the title or note body to begin editing.
 
 ![Screenshot1](./public/readme_1.png "Trevornote Main Page")
 
